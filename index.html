@@ -87,8 +87,11 @@
                 button.style.backgroundColor = 'blue';
             }
 
+            // Получение URL страницы
+          
+            
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder", true);
+            xhr.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/info", true);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
             xhr.onreadystatechange = function () {
@@ -112,18 +115,34 @@
             var infoRequest = new XMLHttpRequest();
             infoRequest.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/info", true);
             infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            var url = window.location.href;
+
+            // Извлечение ID из URL
+            var urlParts = url.split('/');
+            var id = urlParts[urlParts.length - 1]; // предположим, что ID находится в конце URL
+
+            console.log("Extracted ID:", id);
 
             infoRequest.onreadystatechange = function () {
                 if (infoRequest.readyState == 4 && infoRequest.status == 200) {
                     result = JSON.parse(infoRequest.responseText);
                     for (let pers of result.person) {
-                        const imageUrl = `data:image/jpeg;base64,${pers.photo}`;
+                        console.log("data to image ", pers.photo)
+                        if(pers.photo == 'AA=='){
+                            imageUrl = `./Он.jpg`;
+                        }else if (pers.photo == 'AAA=')
+                        {
+                            imageUrl = `./Она.jpg`;
+                        }else{
+                             imageUrl = `data:image/jpeg;base64,${pers.photo}`;
+                        }
+                        console.log("COME ", imageUrl)
                         UI.createBox(imageUrl, 'Your Image', `${pers.name}`);
                     }
                 }
             };
 
-            var data = JSON.stringify({ PersonName: `ОТПРАВЛЕННО}` });
+            var data = JSON.stringify({ PersonName: `${id }` });
             infoRequest.send(data);
         }
     };
@@ -138,6 +157,7 @@
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
             // Генерируем новые коробки
             Data.handlePageBuilder();
+           
         }
     });
 
@@ -146,6 +166,7 @@
         // Проверяем, не превышено ли максимальное количество коробок
         if (UI.buttonCounter <= maxCount) {
             Data.handlePageBuilder();
+            //handleButtonClick();
         }
         if (UI.buttonCounter > maxCount) {
             // Выводим текст по центру страницы
