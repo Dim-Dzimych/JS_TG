@@ -88,8 +88,6 @@
             }
 
             // Получение URL страницы
-          
-            
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/info", true);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -115,11 +113,10 @@
             var infoRequest = new XMLHttpRequest();
             infoRequest.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/info", true);
             infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            var url = window.location.href;
 
-            // Извлечение ID из URL
-            var urlParts = url.split('/');
-            var id = urlParts[urlParts.length - 1]; // предположим, что ID находится в конце URL
+            // Извлечение ID из параметров запроса
+            var urlParams = new URLSearchParams(window.location.search);
+            var id = urlParams.get('id');
 
             console.log("Extracted ID:", id);
 
@@ -134,7 +131,7 @@
                         {
                             imageUrl = `./Она.jpg`;
                         }else{
-                             imageUrl = `data:image/jpeg;base64,${pers.photo}`;
+                            imageUrl = `data:image/jpeg;base64,${pers.photo}`;
                         }
                         console.log("COME ", imageUrl)
                         UI.createBox(imageUrl, 'Your Image', `${pers.name}`);
@@ -142,7 +139,7 @@
                 }
             };
 
-            var data = JSON.stringify({ PersonName: `${id }` });
+            var data = JSON.stringify({ PersonName: id });
             infoRequest.send(data);
         }
     };
@@ -157,7 +154,6 @@
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
             // Генерируем новые коробки
             Data.handlePageBuilder();
-           
         }
     });
 
@@ -166,7 +162,6 @@
         // Проверяем, не превышено ли максимальное количество коробок
         if (UI.buttonCounter <= maxCount) {
             Data.handlePageBuilder();
-            //handleButtonClick();
         }
         if (UI.buttonCounter > maxCount) {
             // Выводим текст по центру страницы
@@ -191,243 +186,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Color Changer</title>-->
-
-<!--    <style>-->
-<!--        body {-->
-<!--            background-color: green;-->
-<!--            display: flex;-->
-<!--            flex-wrap: wrap;-->
-<!--            justify-content: space-around;-->
-<!--            width: 600px;-->
-<!--        }-->
-
-<!--        .box {-->
-<!--            width: 200px;-->
-<!--            margin: 40px;-->
-<!--            text-align: center;-->
-<!--            flex-direction: column;-->
-<!--            align-items: center;-->
-<!--        }-->
-
-<!--        img {-->
-<!--            width: 200px;-->
-<!--            height: 200px;-->
-<!--            border-radius: 5%;-->
-<!--            overflow: hidden;-->
-<!--        }-->
-<!--        p {-->
-<!--            margin-top: 10px;-->
-<!--            margin-right: 20px;-->
-<!--        }-->
-<!--        button {-->
-<!--            background: orange;-->
-<!--            height: 40px;-->
-<!--            width: 80px;-->
-<!--            margin-top: 10px;-->
-<!--            margin-right: 20px;-->
-<!--        }-->
-<!--    </style>-->
-<!--    <script>-->
-<!--        window.addEventListener("scroll", function () {-->
-<!--            // Проверяем, достиг ли скролл конца страницы-->
-<!--            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {-->
-<!--                // Генерируем новые коробки-->
-<!--              //  CreateBoxsLine(50)-->
-<!--            }-->
-<!--        });-->
-<!--        </script>-->
-<!--</head>-->
-<!--<body>-->
-<!--<script>-->
-<!--    let buttonCounter = 1; // Переменная для отслеживания порядкового номера кнопки-->
-<!--    let maxCount = 50;-->
-<!--    let name;-->
-<!--    let photo;-->
-
-<!--    // Функция для создания блока с изображением, текстом и кнопкой-->
-<!--    function createBox(imageSrc, altText, buttonText, buttonClickHandler) {-->
-<!--        const box = document.createElement('div');-->
-<!--        box.classList.add('box');-->
-
-<!--        const img = document.createElement('img');-->
-<!--        img.src = imageSrc;-->
-<!--        img.alt = altText;-->
-
-<!--        const discuse = document.createElement('p');-->
-<!--        discuse.textContent = 'Your text goes here';-->
-
-<!--        const button = document.createElement('button');-->
-<!--        button.textContent = `${buttonText} ${buttonCounter}`; // Используем переменную buttonCounter в тексте кнопки-->
-<!--        button.id = `${buttonCounter}`-->
-<!--        // Уникальный ID для каждой кнопки-->
-<!--        button.id =`${buttonCounter}`;-->
-
-<!--        // Добавление обработчика событий-->
-<!--        button.addEventListener("click", function () {-->
-<!--            handleButtonClick(button.id,button);-->
-<!--        });-->
-<!--        -->
-
-<!--        // Добавление элементов в блок-->
-<!--        box.appendChild(img);-->
-<!--        box.appendChild(discuse);-->
-<!--        box.appendChild(button);-->
-
-<!--        document.body.appendChild(box); // Добавление блока в body-->
-<!--    }-->
-
-<!--    function handleButtonClick(buttonNumber,button) {-->
-<!--        console.log("Button clicked with number:", buttonNumber);-->
-
-<!--        // Изменяем текст кнопки-->
-<!--        if (button.textContent == 'Удалить запрос')-->
-<!--        {-->
-<!--            button.textContent = `Click Me ${button.id}`;-->
-<!--            button.style.backgroundColor = 'orange'-->
-<!--        }-->
-<!--        else-->
-<!--        {-->
-<!--            button.textContent = `Удалить запрос`;-->
-<!--            button.style.backgroundColor = 'blue'-->
-<!--        }-->
-<!--        var xhr = new XMLHttpRequest();-->
-<!--        xhr.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder", true); // Указываем новый URL-->
-<!--        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");-->
-
-<!--        xhr.onreadystatechange = function () {-->
-<!--            if (xhr.readyState == 4 && xhr.status == 200) {-->
-<!--                var colors = JSON.parse(xhr.responseText);-->
-<!--                var color = colors.colors;-->
-<!--                document.body.style.backgroundColor = color;-->
-<!--                console.log("COLOR IS", color);-->
-<!--            }-->
-<!--        };-->
-
-<!--        var data = JSON.stringify({ action: "button_click", buttonNumber: buttonNumber });-->
-<!--        xhr.send(data);-->
-
-<!--    }-->
-<!--    -->
-<!--    function handlePageBuilder(){-->
-<!--        var result;-->
-<!--        var infoRequest = new XMLHttpRequest();-->
-<!--        infoRequest.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/info", true); // Указываем новый URL-->
-<!--        infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");-->
-
-<!--        infoRequest.onreadystatechange = function () {-->
-<!--           if (infoRequest.readyState == 4 && infoRequest.status == 200) {-->
-<!--               result = JSON.parse(infoRequest.responseText);-->
-<!--               for (let pers of result.person) {-->
-<!--                   -->
-<!--                   const imageUrl = `data:image/jpeg;base64,${pers.photo}`;-->
-<!--                   -->
-<!--                   createBox(imageUrl, 'Your Image', `${pers.name}`, handleButtonClick, buttonCounter);-->
-<!--                   buttonCounter++;-->
-<!--               }-->
-<!--               //document.body.style.backgroundColor = color;-->
-<!--           }-->
-<!--        }-->
-<!--        -->
-<!--        // if (infoRequest.readyState == 4 && infoRequest.status == 200) {-->
-<!--        //     result = JSON.parse(infoRequest.responseText);-->
-<!--        //-->
-<!--        //     for(let person of result) {-->
-<!--        //             //let name = person.name;-->
-<!--        //             //let photo = person.photo;-->
-<!--        //-->
-<!--        //              for (let i = 0; i < 5; i++) {-->
-<!--        //             //const imageUrl = `data:image/jpeg;base64,${photo}`;-->
-<!--        //-->
-<!--        //             //createBox("Он.jpg", 'Your Image', `${name}`, handleButtonClick, buttonCounter);-->
-<!--        //                  createBox("Он.jpg", 'Your Image', "Ghb", handleButtonClick, buttonCounter);-->
-<!--        //             buttonCounter++;-->
-<!--        //             }-->
-<!--        //             // Далее вы можете использовать name и photo по вашему усмотрению-->
-<!--        //             //console.log("Имя:", name);-->
-<!--        //             //console.log("Фото:", photo);-->
-<!--        //        -->
-<!--        //     }-->
-<!--        //    -->
-<!--        // }-->
-<!--        -->
-<!--        var data = JSON.stringify({ PersonName: `ОТПРАВЛЕННО}` });-->
-<!--        infoRequest.send(data);-->
-<!--       -->
-<!--       //return photo;-->
-<!--    }-->
-<!--    //-->
-<!--    // // Добавляем обработчик события прокрутки-->
-<!--    // window.addEventListener("scroll", function () {-->
-<!--    //     // Проверяем, достиг ли скролл конца страницы-->
-<!--    //     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {-->
-<!--    //         // Генерируем новые коробки-->
-<!--    //         CreateBoxsLine(50)-->
-<!--    //     }-->
-<!--    // });-->
-
-<!--    function CreateBoxsLine(maxCount) {-->
-<!--       -->
-<!--        // Проверяем, не превышено ли максимальное количество коробок-->
-<!--        if (buttonCounter <= maxCount) {-->
-<!--            handlePageBuilder();-->
-<!--           // var personInfo = handlePageBuilder();-->
-<!--            //console.log("PERSON", personInfo)-->
-
-<!--            // for (let i = 0; i < 10; i++) {-->
-<!--            //     // createBox(`${personInfo.Photo}`, 'Your Image', `name- ${personInfo.Name}`, handleButtonClick, buttonCounter);-->
-<!--            //     createBox('computer.png', 'Your Image', `Click`, handleButtonClick, buttonCounter);-->
-<!--            //     buttonCounter++;-->
-<!--            // }-->
-<!--        }-->
-<!--            if (buttonCounter > maxCount) {-->
-<!--                // Выводим текст по центру страницы-->
-<!--                const centerText = document.createElement('p');-->
-<!--                centerText.innerHTML = 'Больше Людей не найдено в вашем регионе.<br>Подождите или поменяйте регион';-->
-<!--                centerText.style.textAlign = 'center';-->
-<!--                centerText.style.color = 'red'; // Цвет текста-->
-<!--                centerText.style.fontWeight = 'bold'; // Жирный текст-->
-
-<!--                // Стили для фона-->
-<!--                centerText.style.backgroundColor = 'yellow'; // Цвет фона текста-->
-<!--                centerText.style.marginTop = '5vh'; // Положение текста по вертикали по центру-->
-<!--                centerText.style.fontSize = '21px';-->
-<!--                centerText.style.padding = '15px'; // Поля вокруг текста-->
-<!--                centerText.style.borderRadius = '15px'; // Радиус закругленных углов-->
-
-<!--                document.body.appendChild(centerText);-->
-
-<!--                // Задаем максимальную высоту, чтобы разрешить скролл до определенного момента-->
-<!--                document.body.style.maxHeight = '100vh';-->
-<!--            }-->
-<!--        -->
-<!--    }-->
-
-<!--    // Вызов функции для создания блоков-->
-<!--    CreateBoxsLine(20)-->
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->
