@@ -110,15 +110,19 @@
     const Data = {
         handlePageBuilder: function() {
             var result;
-            var infoRequest = new XMLHttpRequest();
-            infoRequest.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/info", true);
-            infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
+            
             // Извлечение ID из параметров запроса
             var urlParams = new URLSearchParams(window.location.search);
             var id = urlParams.get('id');
 
             console.log("Extracted ID:", id);
+            
+            
+            var infoRequest = new XMLHttpRequest();
+            infoRequest.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/info", true);
+            infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            
 
             infoRequest.onreadystatechange = function () {
                 if (infoRequest.readyState == 4 && infoRequest.status == 200) {
