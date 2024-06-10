@@ -110,15 +110,13 @@
     const Data = {
         handlePageBuilder: function() {
             var result;
-
-
-             console.log("START PAGE:");
+            console.log("START PAGE:");
             
             // Извлечение ID из параметров запроса
             var urlParams = new URLSearchParams(window.location.search);
-            var id = urlParams.get('id');
+            var idperson = urlParams.get('id');
 
-            console.log("Extracted ID:", id);
+            console.log("Extracted ID:", idperson);
             
             
             var infoRequest = new XMLHttpRequest();
@@ -141,12 +139,14 @@
                             imageUrl = `data:image/jpeg;base64,${pers.photo}`;
                         }
                         console.log("COME ", imageUrl)
-                        UI.createBox(imageUrl, 'Your Image', `${pers.name}`);
+                       // UI.createBox(imageUrl, 'Your Image', `${pers.name}`);
+                        UI.createBox(imageUrl, 'Your Image', `${idperson}`);
+                        
                     }
                 }
             };
 
-            var data = JSON.stringify({ PersonName: id });
+            var data = JSON.stringify({ PersonName: idperson });
             infoRequest.send(data);
         }
     };
@@ -154,6 +154,7 @@
     // Инициализация приложения
     function init() {
         CreateBoxsLine(20);
+        console.log("privet")
     }
 
     // Добавляем обработчик события прокрутки
