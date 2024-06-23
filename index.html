@@ -146,10 +146,10 @@
 
             // Получение URL страницы
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/chat", true);
+            xhr.open("POST", "https://468b-87-255-17-240.ngrok-free.app/api/finder/chat", true);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-            var data = JSON.stringify({ action: "button_click", buttonNumber: buttonNumber, userId: userId, tranferPersonId: transferPersonId });
+            var data = JSON.stringify({ userId: userId, transferPersonId: transferPersonId });
             xhr.send(data);
         }
     };
@@ -163,7 +163,7 @@
             var idperson = urlParams.get('id');
 
             var infoRequest = new XMLHttpRequest();
-            infoRequest.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/info", true);
+            infoRequest.open("POST", "https://468b-87-255-17-240.ngrok-free.app/api/finder/info", true);
             infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
             infoRequest.onreadystatechange = function () {
