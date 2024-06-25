@@ -146,7 +146,7 @@
 
             // Получение URL страницы
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://468b-87-255-17-240.ngrok-free.app/api/finder/chat", true);
+            xhr.open("POST", "https://9c51-45-137-112-91.ngrok-free.app/api/finder/chat", true);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
             var data = JSON.stringify({ userId: userId, transferPersonId: transferPersonId });
@@ -154,16 +154,15 @@
         }
     };
 
-    // Модуль для работы с данными
+    // после открытия страницы, обработка
     const Data = {
         handlePageBuilder: function() {
             var result;
-            // Извлечение ID из параметров запроса
             var urlParams = new URLSearchParams(window.location.search);
             var idperson = urlParams.get('id');
 
             var infoRequest = new XMLHttpRequest();
-            infoRequest.open("POST", "https://468b-87-255-17-240.ngrok-free.app/api/finder/info", true);
+            infoRequest.open("POST", "https://9c51-45-137-112-91.ngrok-free.app/api/finder/info", true);
             infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
             infoRequest.onreadystatechange = function () {
@@ -197,7 +196,7 @@
         }
     };
 
-    // Инициализация приложения
+    // инициализация
     function init() {
         CreateBoxsLine(20);
     }
