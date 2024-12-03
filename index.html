@@ -1,240 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Changer</title>
-
-    <style>
-        body {
-            background-color: green;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            width: 600px;
-        }
-
-        .box {
-            width: 200px;
-            margin: 40px;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        img {
-            width: 200px;
-            height: 200px;
-            border-radius: 5%;
-            overflow: hidden;
-        }
-        p {
-            margin-top: 10px;
-            margin-right: 20px;
-        }
-        button {
-            background: orange;
-            height: 40px;
-            width: 80px;
-            margin-top: 10px;
-            margin-right: 20px;
-        }
-    </style>
+    <meta charset="utf-8">
+    <link href="css/layout.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link href="Learning_CSS.css" rel="stylesheet">
+    <title>Telegram-Lubol-bot</title>
 </head>
+
+<script src="BackHandler.js"></script>
+<script src="Learning_JS.js"></script>
+
 <body>
-
-<script>
-    // Модуль для работы с интерфейсом
-    // const UI = {
-    //     createBox: function(imageSrc, altText, buttonText, buttonClickHandler) {
-    //         const box = document.createElement('div');
-    //         box.classList.add('box');
-    //
-    //         const img = document.createElement('img');
-    //         img.src = imageSrc;
-    //         img.alt = altText;
-    //
-    //         const discuse = document.createElement('p');
-    //         discuse.textContent = 'Your text goes here';
-    //
-    //         const button = document.createElement('button');
-    //         button.textContent = `${buttonText} ${UI.buttonCounter}`;
-    //         button.id = `${UI.buttonCounter}`;
-    //         button.addEventListener("click", function () {
-    //             Events.handleButtonClick(button.id, button);
-    //         });
-    //
-    //         box.appendChild(img);
-    //         box.appendChild(discuse);
-    //         box.appendChild(button);
-    //
-    //         document.body.appendChild(box);
-    //         UI.buttonCounter++;
-    //     },
-    //     buttonCounter: 1
-    // };
-    const UI = {
-        createBox: function(imageSrc, altText, buttonText, userId, transferPersonId) {
-            const box = document.createElement('div');
-            box.classList.add('box');
-
-            const img = document.createElement('img');
-            img.src = imageSrc;
-            img.alt = altText;
-
-            const discuse = document.createElement('p');
-            discuse.textContent = 'Your text goes here';
-
-            const button = document.createElement('button');
-            button.textContent = `${buttonText} ${UI.buttonCounter}`;
-            button.id = `${UI.buttonCounter}`;
-            
-            button.setAttribute('data-user-id', userId);
-            button.setAttribute('transfer-person-id', transferPersonId);
-            
-            button.addEventListener("click", function () {
-                Events.handleButtonClick(button.id, userId,transferPersonId);
-            });
-
-            box.appendChild(img);
-            box.appendChild(discuse);
-            box.appendChild(button);
-
-            document.body.appendChild(box);
-            UI.buttonCounter++;
-        },
-        buttonCounter: 1
-    };
-
-    // Модуль для обработки событий
-    // const Events = {
-    //     handleButtonClick: function(buttonNumber, button) {
-    //         console.log("Button clicked with number:", buttonNumber);
-    //
-    //         // if (button.textContent === 'Удалить запрос') {
-    //         //     button.textContent = `Click Me ${button.id}`;
-    //         //     button.style.backgroundColor = 'orange';
-    //         // } else {
-    //         //     button.textContent = `Удалить запрос`;
-    //         //     button.style.backgroundColor = 'blue';
-    //         // }
-    //
-    //         // Получение URL страницы
-    //         var xhr = new XMLHttpRequest();
-    //         xhr.open("POST", "https://0559-46-53-240-53.ngrok-free.app/api/finder/chat", true);
-    //         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    //
-    //         // xhr.onreadystatechange = function () {
-    //         //     if (xhr.readyState == 4 && xhr.status == 200) {
-    //         //         var colors = JSON.parse(xhr.responseText);
-    //         //         var color = colors.colors;
-    //         //         document.body.style.backgroundColor = color;
-    //         //         console.log("COLOR IS", color);
-    //         //     }
-    //         // };
-    //
-    //         var data = JSON.stringify({ action: "button_click", buttonNumber: buttonNumber });
-    //         xhr.send(data);
-    //     }
-    //};
-    const Events = {
-        handleButtonClick: function(buttonNumber, userId,transferPersonId) {
-            console.log("Button clicked with number:", buttonNumber);
-            console.log("User ID:", userId);
-            console.log("TransferPersonId:", transferPersonId);
-            
-
-            // Получение URL страницы
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-            var data = JSON.stringify({ userId: userId, transferPersonId: transferPersonId });
-            xhr.send(data);
-        }
-    };
-
-    // после открытия страницы, обработка
-    const Data = {
-        handlePageBuilder: function() {
-            var result;
-            var urlParams = new URLSearchParams(window.location.search);
-            var idperson = urlParams.get('id');
-
-            var infoRequest = new XMLHttpRequest();
-            infoRequest.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/info", true);
-            infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-            infoRequest.onreadystatechange = function () {
-                if (infoRequest.readyState == 4 && infoRequest.status == 200) {
+<div class = "start-screen" id ="startScreen">
+    <img src="startScreen.jpg" alt="StartScreen">
+</div>
+<div class="container" id="container">
+    <div class="person">
+        <div class="card" id="card">
+            <div class="card-upper-info">
+                <h2 class="name-Up" id="nameUp">Анастасия, 25</h2>
+                <img src="iconExpand.svg" alt="IconExpand" class="card-expand" id="arrowIcon" onclick="toggleArrow(this)">
+            </div>
+            <img src="photo1.jpg" alt="Person picture" class="card-photo" id = "cardPhoto">
+            <div class="card-info">
+                <h2>Анастасия, 25</h2>
+                
+                <img src="icon_location.svg" alt="Location picture" class="card-photo-location">
+                
+                <h3 class = "card-photo-place">
+                    Москва
+                </h3>
+                
+                <img src="iconLikeNonActive.svg"  class="icon_like" id="iconLike" onclick="like(this)">
+            </div>
+            <div class="scroll-view" id ="scrollContent"  onclick="toggleArrow()">
+                <div class="tags" id = "tagsInfo">
+                    <p>Москва</p>
+                    <p>Дизайнер</p>
+                    <p>Рак</p>
+                    <p>Дизайнер</p>
                     
-                    result = JSON.parse(infoRequest.responseText);
-                    
-                    for (let person of result.person) {
-                        
-                        if (person.photo == 'AA=='){
-                            imageUrl = `./Он.jpg`;
-                        }
-                        else if (person.photo == 'AAA=')
-                        {
-                            imageUrl = `./Она.jpg`;
-                        }
-                        else {
-                            imageUrl = `data:image/jpeg;base64,${person.photo}`;
-                        }
-                        
-                        console.log("PERSON - ",person) // DELETE
-                        
-                        UI.createBox(imageUrl, 'Your Image', `${person.name}`, `${person.userId}`, `${person.transferPersonId}`);
-                    }
-                   
-                }
-            };
+                </div>
+                <div class="about" id ="about">
+                    <span id="aboutTitle">О себе</span>
+                    <p id = "aboutBasic">фффффффффффффф   ффффффф фкрасивая дфывываушка Настя люблю кофе красивая девушк люблю кофе красивая девушка Настя люблю кофе
+                        </p>
+                </div>
+               
+            </div>
+            
+        </div>
+       <script>
+           console.log("START INITIALIZEW")
+       initializeBack();    
+       </script>
+<!--        <button onclick="addPerson()">Добавить еще одного человека</button>-->
+       
+    </div>
+</div>
 
-            var data = JSON.stringify({ PersonName: idperson });
-            infoRequest.send(data);
-        }
-    };
 
-    // инициализация
-    function init() {
-        CreateBoxsLine(20);
-    }
-
-    // Добавляем обработчик события прокрутки
-    window.addEventListener("scroll", function () {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            // Генерируем новые коробки
-            Data.handlePageBuilder();
-        }
-    });
-
-    // Функция для создания блоков
-    function CreateBoxsLine(maxCount) {
-        // Проверяем, не превышено ли максимальное количество коробок
-        if (UI.buttonCounter <= maxCount) {
-            Data.handlePageBuilder();
-        }
-        if (UI.buttonCounter > maxCount) {
-            // Выводим текст по центру страницы
-            const centerText = document.createElement('p');
-            centerText.innerHTML = 'Больше Людей не найдено в вашем регионе.<br>Подождите или поменяйте регион';
-            centerText.style.textAlign = 'center';
-            centerText.style.color = 'red';
-            centerText.style.fontWeight = 'bold';
-            centerText.style.backgroundColor = 'yellow';
-            centerText.style.marginTop = '5vh';
-            centerText.style.fontSize = '21px';
-            centerText.style.padding = '15px';
-            centerText.style.borderRadius = '15px';
-            document.body.appendChild(centerText);
-            document.body.style.maxHeight = '100vh';
-        }
-    }
-
-    // Вызов функции инициализации при загрузке страницы
-    window.onload = init;
-</script>
 
 </body>
 </html>
+
+
