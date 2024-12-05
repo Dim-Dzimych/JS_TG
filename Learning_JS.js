@@ -1,9 +1,4 @@
 
-//<script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-//<script src="https://github.com/TelegramMessenger/TGMiniAppsJsSDK.git"></script>
-
-
 function toggleArrow(arrow) {
     const scroll = arrow.closest('.card').querySelector('.scroll-view'); 
     const photo = arrow.closest('.card').querySelector('.card-photo'); 
@@ -57,7 +52,6 @@ function toggleArrow(arrow) {
 }
 
 const people = {};
-import { init } from '@twa-dev/sdk';
 
 function like(like,userId,transferPersonId)
 {
@@ -101,8 +95,6 @@ window.addEventListener('load', function () {
         }, 500); 
     }, 450); 
 });
-
-
 
 
 //
