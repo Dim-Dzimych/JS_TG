@@ -88,7 +88,7 @@ window.addEventListener('load', function () {
         const appContent = document.getElementById('container');
 
         splashScreen.style.opacity = '0';
-        
+
         setTimeout(function () {
             splashScreen.style.display = 'none';
             appContent.style.display = 'block'; 
@@ -159,8 +159,8 @@ Telegram.WebApp.onEvent('close', function () {
 });
 
 function sendDataToServer() {
-    const id = localStorage.getItem('userId');
-    const transfersPersonsIds = people[id];
+    //const id = localStorage.getItem('userId');
+    //const transfersPersonsIds = people[id];
 
     fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
         method: "POST",
