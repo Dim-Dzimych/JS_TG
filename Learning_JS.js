@@ -151,10 +151,10 @@ window.addEventListener('load', function () {
 
     //console.log('Telegram WebApp Data:', webApp.initData); // Отладочная информация
     //console.log('User Info:', webApp.initDataUnsafe); // Данные пользователя
-
+    webApp.background('#FFFFFF'); // Устанавливает цвет фона
     // Установите настройки
-    webApp.expand(); // Разворачивает Web App
-    webApp.setBackgroundColor('#FFFFFF'); // Устанавливает цвет фона
+    webApp.close(); // Разворачивает Web App
+    
 
     // var xhr = new XMLHttpRequest();
     // xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
