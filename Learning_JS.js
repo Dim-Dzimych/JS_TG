@@ -136,8 +136,11 @@ function CreateIdPerson(userId)
     }
     
     console.log("User ID:", currentUserId);
-   
+
+  
+
 }
+
 
 
 
@@ -146,15 +149,35 @@ function CreateIdPerson(userId)
 window.addEventListener('load', function () {
     const webApp = Telegram.WebApp;
 
-    console.log('Telegram WebApp Data:', webApp.initData); // Отладочная информация
-    console.log('User Info:', webApp.initDataUnsafe); // Данные пользователя
+    //console.log('Telegram WebApp Data:', webApp.initData); // Отладочная информация
+    //console.log('User Info:', webApp.initDataUnsafe); // Данные пользователя
 
     // Установите настройки
     webApp.expand(); // Разворачивает Web App
     webApp.setBackgroundColor('#FFFFFF'); // Устанавливает цвет фона
+
+    // var xhr = new XMLHttpRequest();
+    // xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
+    // xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    //
+    // var data = JSON.stringify({ userId: id, transferPersonId: transfersPersonsIds });
+    // var data = JSON.stringify("2124");
+
+
+    fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: "id", transfersPersonsIds: "transfersPersonsIds" }),
+        keepalive: true, // Важный параметр
+    });
+
+    //xhr.send(data);
 });
 
 Telegram.WebApp.onEvent('close', function () {
+    
     sendDataToServer();
 });
 
@@ -167,9 +190,7 @@ function sendDataToServer() {
         headers: {
             "Content-Type": "application/json;charset=UTF-8",
         },
-        body: JSON.stringify({ userId: "id", transferPersonId: "[...transfersPersonsIds]" }),
+        body: JSON.stringify("123123123"),
         keepalive: true, // Гарантирует отправку запроса
     });
 }
-
-
