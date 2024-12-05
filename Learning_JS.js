@@ -57,6 +57,7 @@ function toggleArrow(arrow) {
 }
 
 const people = {};
+import { init } from '@twa-dev/sdk';
 
 function like(like,userId,transferPersonId)
 {
@@ -101,29 +102,6 @@ window.addEventListener('load', function () {
     }, 450); 
 });
 
-//
-// import { init } from '@twa-dev/sdk';
-//
-// // Инициализация Web App
-// const app = init();
-//
-// // Настройка главной кнопки
-// app.MainButton
-//     .setText('Отправить')
-//     .onClick(() => {
-//         console.log('Main button clicked!');
-//         app.close();
-//     })
-//     .show();
-//
-// // Автоматическое разворачивание WebView
-// app.expand();
-//
-// // Событие при закрытии Web App
-// app.onEvent('close', () => {
-//     console.log('Web App закрыто.');
-// });
-
 
 
 
@@ -155,31 +133,6 @@ window.addEventListener('load', function () {
 // })
 
 
-const tg = window.Telegram.WebApp;
-
-tg.ready();
-
-tg.onEvent('close', () => {
-    const id = localStorage.getItem('userId');
-    const transfersPersonsIds = people[id];
-
-    if (id && transfersPersonsIds) {
-        fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify("123"),
-            keepalive: true,
-        });
-    }
-
-});
-
-
-
-
-
 function CreateIdPerson(userId)
 {
     let currentUserId = localStorage.getItem('userId');
@@ -192,6 +145,39 @@ function CreateIdPerson(userId)
     
     console.log("User ID:", currentUserId);
    
+}
+
+
+
+
+
+window.addEventListener('load', function () {
+    const webApp = Telegram.WebApp;
+
+    console.log('Telegram WebApp Data:', webApp.initData); // Отладочная информация
+    console.log('User Info:', webApp.initDataUnsafe); // Данные пользователя
+
+    // Установите настройки
+    webApp.expand(); // Разворачивает Web App
+    webApp.setBackgroundColor('#FFFFFF'); // Устанавливает цвет фона
+});
+
+Telegram.WebApp.onEvent('close', function () {
+    sendDataToServer();
+});
+
+function sendDataToServer() {
+    const id = localStorage.getItem('userId');
+    const transfersPersonsIds = people[id];
+
+    fetch("https://your-backend-url.com/api/close", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: "id", transferPersonId: "[...transfersPersonsIds]" }),
+        keepalive: true, // Гарантирует отправку запроса
+    });
 }
 
 
