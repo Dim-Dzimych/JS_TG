@@ -101,28 +101,28 @@ window.addEventListener('load', function () {
     }, 450); 
 });
 
-
-import { init } from '@twa-dev/sdk';
-
-// Инициализация Web App
-const app = init();
-
-// Настройка главной кнопки
-app.MainButton
-    .setText('Отправить')
-    .onClick(() => {
-        console.log('Main button clicked!');
-        app.close();
-    })
-    .show();
-
-// Автоматическое разворачивание WebView
-app.expand();
-
-// Событие при закрытии Web App
-app.onEvent('close', () => {
-    console.log('Web App закрыто.');
-});
+//
+// import { init } from '@twa-dev/sdk';
+//
+// // Инициализация Web App
+// const app = init();
+//
+// // Настройка главной кнопки
+// app.MainButton
+//     .setText('Отправить')
+//     .onClick(() => {
+//         console.log('Main button clicked!');
+//         app.close();
+//     })
+//     .show();
+//
+// // Автоматическое разворачивание WebView
+// app.expand();
+//
+// // Событие при закрытии Web App
+// app.onEvent('close', () => {
+//     console.log('Web App закрыто.');
+// });
 
 
 
@@ -155,26 +155,26 @@ app.onEvent('close', () => {
 // })
 
 
-// const tg = window.Telegram.WebApp;
-//
-// tg.ready();
-//
-// tg.onEvent('close', () => {
-//     const id = localStorage.getItem('userId');
-//     const transfersPersonsIds = people[id];
-//
-//     if (id && transfersPersonsIds) {
-//         fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify("123"),
-//             keepalive: true,
-//         });
-//     }
-//
-// });
+const tg = window.Telegram.WebApp;
+
+tg.ready();
+
+tg.onEvent('close', () => {
+    const id = localStorage.getItem('userId');
+    const transfersPersonsIds = people[id];
+
+    if (id && transfersPersonsIds) {
+        fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify("123"),
+            keepalive: true,
+        });
+    }
+
+});
 
 
 
