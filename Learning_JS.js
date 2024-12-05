@@ -162,10 +162,10 @@ function sendDataToServer() {
     const id = localStorage.getItem('userId');
     const transfersPersonsIds = people[id];
 
-    fetch("https://your-backend-url.com/api/close", {
+    fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json;charset=UTF-8",
         },
         body: JSON.stringify({ userId: "id", transferPersonId: "[...transfersPersonsIds]" }),
         keepalive: true, // Гарантирует отправку запроса
