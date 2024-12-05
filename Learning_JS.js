@@ -1,108 +1,4 @@
 
-// function addPerson() {
-//     // Создаем общий контейнер для карточки
-//     const person = document.createElement('div');
-//     person.className = 'person';
-//
-//     const card = document.createElement('div');
-//     card.className = 'card';
-//
-//     const img = document.createElement('img');
-//     img.src = 'photo2.jpg';
-//     img.alt = 'Person picture';
-//     img.className = 'card-photo';
-//
-//     // Контейнер для верхней информации и стрелки
-//     const cardUpperInfo = document.createElement('div');
-//     cardUpperInfo.className = 'card-upper-info';
-//
-//     const upperName = document.createElement('h2');
-//     upperName.className = 'name-Up';
-//     upperName.textContent = 'Дмитрий, 24';
-//
-//     const arrow = document.createElement('img');
-//     arrow.src = 'iconExpand.svg';
-//     arrow.alt = 'IconExpand';
-//     arrow.className = 'card-expand';
-//     arrow.onclick = function() {
-//         toggleArrow(arrow);  // Привязываем стрелку к функции toggleArrow
-//     };
-//
-//     cardUpperInfo.appendChild(upperName);
-//     cardUpperInfo.appendChild(arrow);
-//
-//     const cardInfo = document.createElement('div');
-//     cardInfo.className = 'card-info';
-//
-//     const name = document.createElement('h2');
-//     name.textContent ='Дмитрий, 24';
-//
-//     const location = document.createElement('img');
-//     location.src = "icon_location.svg";
-//     location.alt = "icon Picture"
-//     location.className = "card-photo-location";
-//    
-//     const place = document.createElement('h3');
-//     place.textContent = 'Mинск';
-//    
-//     const likeIcon = document.createElement('img')
-//     likeIcon.src = 'iconLikeNonActive.svg'
-//     likeIcon.alt = 'heardIcon'
-//     likeIcon.className = 'icon_like'
-//     likeIcon.onclick = function() 
-//     {
-//         like(likeIcon);
-//     }
-//
-//     cardInfo.appendChild(name);
-//     cardInfo.appendChild(location);
-//     cardInfo.appendChild(place);
-//     cardInfo.appendChild(likeIcon)
-//
-//     // Создаем выезжающий блок
-//     const scrollView = document.createElement('div');
-//     scrollView.className = 'scroll-view';
-//
-//     const tags = document.createElement('div');
-//     tags.className = 'tags';
-//     tags.innerHTML = `
-//         <p>Минск</p>
-//         <p>Разработчи</p>
-//         <p>Скорпион</p>
-//     `;
-//
-//     // const about = document.createElement('div');
-//     // about.className = 'about';
-//     // about.innerHTML = `
-//     //     <span>О себе</span>
-//     //     <p>a</p>
-//     // `;
-//     // Создаём div для блока "О себе"
-//     const about = document.createElement('div');
-//     about.className = 'about';
-//
-//     const aboutTitle = document.createElement('span');
-//     aboutTitle.textContent = 'О себе';
-//
-//     const aboutText = document.createElement('p');
-//     aboutText.textContent = 'Люблю кофейню и кофе';
-//    
-//     about.appendChild(aboutTitle);
-//     about.appendChild(aboutText);
-//
-//     scrollView.appendChild(tags);
-//     scrollView.appendChild(about);
-//
-//     card.appendChild(cardUpperInfo);
-//     card.appendChild(img);
-//     card.appendChild(cardInfo);
-//     card.appendChild(scrollView);
-//
-//     person.appendChild(card);
-//
-//     document.getElementById('container').appendChild(person);
-// }
-
 function toggleArrow(arrow) {
     const scroll = arrow.closest('.card').querySelector('.scroll-view'); 
     const photo = arrow.closest('.card').querySelector('.card-photo'); 
@@ -200,7 +96,7 @@ window.addEventListener('load', function () {
     }, 450); 
 });
 // after close web interface
-window.addEventListener("beforeunload",function (){
+window.addEventListener("visibilitychange",function (){
      let id = localStorage.getItem('userId');
      let transfersPersonsIds = people[id];
     
