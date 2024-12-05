@@ -155,7 +155,9 @@ function toggleArrow(arrow) {
     }
 }
 
-function like(like)
+const people = {};
+
+function like(like,userId,transferPersonId)
 {
     if (like.src.includes("iconLikeNonActive.svg"))
     {
@@ -165,7 +167,22 @@ function like(like)
         like.src = "iconLikeNonActive.svg";
     }
     
-    //send like to array of "Clicked"
+    if (!people[userId])
+    {
+        people[userId] = new Set();
+        people[userId].add(transferPersonId);
+        CreateIdPerson(userId);
+    } else if (people[userId].has(transferPersonId))
+    {
+        people[userId].delete(transferPersonId);
+        if (people[userId].size === 0){
+            delete people[userId]
+        }
+    }else {
+        people[userId].add(transferPersonId);
+    }
+   
+   
 }
 
 // start view
@@ -182,6 +199,44 @@ window.addEventListener('load', function () {
         }, 500); 
     }, 450); 
 });
+// after close web interface
+window.addEventListener("beforeunload",function (){
+     let id = localStorage.getItem('userId');
+     let transfersPersonsIds = people[id];
+    
+    
+    //var xhr = new XMLHttpRequest();
+    //xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
+    //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+    //var data = JSON.stringify({ userId: id, transferPersonId: transfersPersonsIds });
+    //var data = JSON.stringify("2124");
+    
+    
+    fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: id, transfersPersonsIds: transfersPersonsIds }),
+        keepalive: true, // Важный параметр
+    });
+    
+    //xhr.send(data);
+})
 
+function CreateIdPerson(userId)
+{
+    let currentUserId = localStorage.getItem('userId');
+
+    if (!currentUserId) {
+        //currentUserId = `${userId}-${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
+        currentUserId = `${userId}`;
+        localStorage.setItem('userId', currentUserId);
+    }
+    
+    console.log("User ID:", currentUserId);
+   
+};
 
 
