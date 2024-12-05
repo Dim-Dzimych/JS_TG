@@ -1,4 +1,9 @@
 
+//<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+//<script src="https://github.com/TelegramMessenger/TGMiniAppsJsSDK.git"></script>
+
+
 function toggleArrow(arrow) {
     const scroll = arrow.closest('.card').querySelector('.scroll-view'); 
     const photo = arrow.closest('.card').querySelector('.card-photo'); 
@@ -95,31 +100,85 @@ window.addEventListener('load', function () {
         }, 500); 
     }, 450); 
 });
-// after close web interface
-window.addEventListener("visibilitychange",function (){
-     let id = localStorage.getItem('userId');
-     let transfersPersonsIds = people[id];
-    
-    
-    //var xhr = new XMLHttpRequest();
-    //xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
-    //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    
-    //var data = JSON.stringify({ userId: id, transferPersonId: transfersPersonsIds });
-    //var data = JSON.stringify("2124");
-    
-    
-    fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: id, transfersPersonsIds: transfersPersonsIds }),
-        keepalive: true, // Важный параметр
-    });
-    
-    //xhr.send(data);
-})
+
+
+import { init } from '@twa-dev/sdk';
+
+// Инициализация Web App
+const app = init();
+
+// Настройка главной кнопки
+app.MainButton
+    .setText('Отправить')
+    .onClick(() => {
+        console.log('Main button clicked!');
+        app.close();
+    })
+    .show();
+
+// Автоматическое разворачивание WebView
+app.expand();
+
+// Событие при закрытии Web App
+app.onEvent('close', () => {
+    console.log('Web App закрыто.');
+});
+
+
+
+
+//
+// // after close web interface
+// window.addEventListener("visibilitychange",function (){
+//      let id = localStorage.getItem('userId');
+//      let transfersPersonsIds = people[id];
+//    
+//    
+//     //var xhr = new XMLHttpRequest();
+//     //xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
+//     //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//    
+//     //var data = JSON.stringify({ userId: id, transferPersonId: transfersPersonsIds });
+//     //var data = JSON.stringify("2124");
+//    
+//    
+//     fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ userId: id, transfersPersonsIds: transfersPersonsIds }),
+//         keepalive: true, // Важный параметр
+//     });
+//    
+//     //xhr.send(data);
+// })
+
+
+// const tg = window.Telegram.WebApp;
+//
+// tg.ready();
+//
+// tg.onEvent('close', () => {
+//     const id = localStorage.getItem('userId');
+//     const transfersPersonsIds = people[id];
+//
+//     if (id && transfersPersonsIds) {
+//         fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify("123"),
+//             keepalive: true,
+//         });
+//     }
+//
+// });
+
+
+
+
 
 function CreateIdPerson(userId)
 {
@@ -133,6 +192,6 @@ function CreateIdPerson(userId)
     
     console.log("User ID:", currentUserId);
    
-};
+}
 
 
