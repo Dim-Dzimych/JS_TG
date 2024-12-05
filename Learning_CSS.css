@@ -1,205 +1,138 @@
 
-body {
-    font-family: "Nunito", sans-serif;
-    font-size: 12px;
-    line-height: 16px;
-    color: #151413;
-    background-color: black;
-    overflow-x: hidden; 
+function toggleArrow(arrow) {
+    const scroll = arrow.closest('.card').querySelector('.scroll-view'); 
+    const photo = arrow.closest('.card').querySelector('.card-photo'); 
+    const tags = scroll.querySelector('.tags'); 
+    const upperName = arrow.closest('.card').querySelector('.name-Up'); 
+    const about = scroll.querySelector('.about'); 
+    const aboutText = about.querySelector('p');
+
+    if (arrow.src.includes("iconHide.svg")) {
+        arrow.src = "iconExpand.svg";
+        scroll.style.height = "0px";
+
+        setTimeout(() => {
+            tags.style.visibility = "hidden";
+            scroll.style.visibility = "hidden";
+            upperName.style.visibility = "hidden";
+            photo.classList.remove("blur");
+        }, 150); // время для закрытия
+
+    } else {
+        // open scroll window in 3 variant (30 letters in one row)
+        
+        if (aboutText.textContent.length <= 68) 
+        {
+            scroll.style.height = "200px";
+        } 
+        else if (aboutText.textContent.length > 68 && 
+                aboutText.textContent.length <= 118)
+        {
+            scroll.style.height = "220px";
+        }
+        else if (aboutText.textContent.length > 118 &&
+                aboutText.textContent.length <= 151)
+        {
+            scroll.style.height = "230px";
+        }
+        
+        arrow.src = "iconHide.svg";
+
+        setTimeout(() => {
+            scroll.style.visibility = "visible";
+            tags.style.visibility = "visible";
+            upperName.style.visibility = "visible";
+        }, 150); // время для открытия
+
+        setTimeout(() => {
+            about.style.visibility = "visible";
+            photo.classList.add("blur");
+        }, 180); // время для отображения текста
+    }
 }
 
-.start-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    opacity: 1;
-    transition: opacity 1s ease-out;
+const people = {};
+
+function like(like,userId,transferPersonId)
+{
+    if (like.src.includes("iconLikeNonActive.svg"))
+    {
+        like.src = "iconLikeActive.svg"
+    } else 
+    {
+        like.src = "iconLikeNonActive.svg";
+    }
     
-}
-.start-screen img {
-    max-width: 100%;
-    max-height: 100%;
-}
-h2{
-    position: absolute;
-    top:-12px;
-    font-family: "SFProDisplayRegular";
-    font-size: 28px;
-    color: #FFFFFF;
-
-}
-h3 {
-    position: absolute;
-    bottom:-5px;
-    left: 38px;
-    font-family: "SFProText-Light";
-    font-size: 20px;
-    color: #FFFFFF;
-    /*padding-left: 8px;*/
-}
-.card-photo-location {
-    position: absolute;
-    width: 16px;
-    height: 20px;
-   bottom: 13px;
-    left: 18px;
-    
-}
-
-.card-expand {
-    position: absolute;
-    top: 22px;
-    right: 16px;
-    width: 40px;
-    height: 40px;
-    z-index: 2;
-}
-.container {
-    position: relative;
-    display: none;
-}
-
-.card {
-    width: 361px;
-    position: relative;
-}
-.card-photo {
-    height: 400px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 16px;
-    
-}
- .blur {
-    filter:blur(3px);
-}
-
-.card-upper-info{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    position: relative;
-    
-    
-}
-.name-Up {
-    font-family: "SFProDisplayRegular";
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%); /* Центрирует элемент по горизонтали */
-    text-align: center; /* Центрирует текст внутри элемента */
-    height: 40px;
-    visibility: hidden;
-    z-index: 2;
-    white-space: nowrap; /* Предотвращает перенос текста на другую строку */
-}
-
-
-.tags, .about {
-    padding: 10px;
-}
-
-.card-info {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 70px;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(8px);
-    /*filter:blur(8px);*/
-    /*border: 16px solid #777FB4; ;*/
-    border-radius: 16px;
-    padding-left: 16px;
-    text-align: left;
-    box-sizing: border-box;
-}
-.icon_like {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-}
-
-.scroll-view {
-    position: absolute;
-    height: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 360px;
-    background-color: white;
-    border-radius: 16px 16px 0 0;
-    transition: height 0.4s ease;
-    visibility: hidden; /* по умолчанию скрыт */
-    overflow: hidden; /* предотвратить отображение контента вне высоты */
-}
-
-
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap:2px;
-    row-gap: 3px;
-    justify-content: left;
-    width: 100%;
-    box-sizing: border-box;
-    visibility: hidden;
-}
-
-.tags p {
-    font-family: "SFProText-Light";
-    margin:3px;
-    border: 0.5px solid #777FB4;
-    background-color:#EBEDFF;
-    color: #474747;
-    border-radius: 16px;
-    padding: 3px 12px 4.5px 12px;
-    font-size: 18px;
-}
-
-.about {
-    visibility: hidden;
-    margin-left: 4px;
-    
-}
-
-.about span {
-    font-family: "SFProText-Medium";
-    font-size: 20px;
-    color: #474747;
-}
-
-.about p {
-    margin-top: 5px;
-    font-family: "SFProText-Regular";
-    line-height: 20px;
-    font-size: 18px;
-    color: #474747;
-
-}
-
-
-
-@font-face {
-    font-family: "SFProDisplayRegular";
-    src: url("sf-pro-display/SFPRODISPLAYREGULAR.otf") format("truetype");
-
-}
-@font-face {
-    font-family: "SFProText-Regular";
-    src: url("sf-pro-display/SFProText-Regular.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "SFProText-Medium";
-    src: url("sf-pro-display/SFProText-Medium.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "SFProText-Light";
-    src: url("sf-pro-display/SFProText-Light.ttf") format("truetype");
-}
+    if (!people[userId])
+    {
+        people[userId] = new Set();
+        people[userId].add(transferPersonId);
+        CreateIdPerson(userId);
+    } else if (people[userId].has(transferPersonId))
+    {
+        people[userId].delete(transferPersonId);
+        if (people[userId].size === 0){
+            delete people[userId]
+        }
+    }else {
+        people[userId].add(transferPersonId);
+    }
    
    
+}
+
+// start view
+window.addEventListener('load', function () {
+    setTimeout(function () {
+        const splashScreen = document.getElementById('startScreen');
+        const appContent = document.getElementById('container');
+
+        splashScreen.style.opacity = '0';
+        
+        setTimeout(function () {
+            splashScreen.style.display = 'none';
+            appContent.style.display = 'block'; 
+        }, 500); 
+    }, 450); 
+});
+// after close web interface
+window.addEventListener("visibilitychange",function (){
+     let id = localStorage.getItem('userId');
+     let transfersPersonsIds = people[id];
+    
+    
+    //var xhr = new XMLHttpRequest();
+    //xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
+    //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+    //var data = JSON.stringify({ userId: id, transferPersonId: transfersPersonsIds });
+    //var data = JSON.stringify("2124");
+    
+    
+    fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: id, transfersPersonsIds: transfersPersonsIds }),
+        keepalive: true, // Важный параметр
+    });
+    
+    //xhr.send(data);
+})
+
+function CreateIdPerson(userId)
+{
+    let currentUserId = localStorage.getItem('userId');
+
+    if (!currentUserId) {
+        //currentUserId = `${userId}-${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
+        currentUserId = `${userId}`;
+        localStorage.setItem('userId', currentUserId);
+    }
+    
+    console.log("User ID:", currentUserId);
+   
+};
+
+
