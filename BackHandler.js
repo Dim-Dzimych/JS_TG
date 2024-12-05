@@ -87,9 +87,11 @@ const UI = {
         likeIcon.src = 'iconLikeNonActive.svg'
         likeIcon.alt = 'heardIcon'
         likeIcon.className = 'icon_like'
+        likeIcon.setAttribute('data-user-id', userId)
+        likeIcon.setAttribute('transfer-person-id', transferPersonId)
         likeIcon.onclick = function()
         {
-            like(likeIcon);
+            like(likeIcon,userId,transferPersonId);
         }
 
         cardInfo.appendChild(name);
@@ -114,10 +116,10 @@ const UI = {
         about.className = 'about';
 
         const aboutTitle = document.createElement('span');
-        aboutTitle.textContent = aboutInfo;
+        aboutTitle.textContent = "О себе";
 
         const aboutText = document.createElement('p');
-        aboutText.textContent = 'Люблю кофейню и кофе';
+        aboutText.textContent = aboutInfo;
 
         about.appendChild(aboutTitle);
         about.appendChild(aboutText);
@@ -172,7 +174,8 @@ console.log("BEFORE REQUEST")
                     let imageUrl = person.photo === 'AA==' ? './Он.jpg' :
                         person.photo === 'AAA=' ? './Она.jpg' :
                             `data:image/jpeg;base64,${person.photo}`;
-
+                    
+                    console.log(person)
                     UI.createBox(imageUrl,
                         'Your Image',
                         `${person.name}`,
@@ -182,7 +185,7 @@ console.log("BEFORE REQUEST")
                         `${person.zodiac}`,
                         `${person.age}`,
                         `${person.proffesion}`,
-                        `${person.about}`
+                        `${person.aboutInfo}`
                         );
                 }
             }
@@ -230,3 +233,4 @@ window.addEventListener("scroll", function () {
 
 // Вызов функции инициализации при загрузке страницы
 window.onload = initializeBack;
+
