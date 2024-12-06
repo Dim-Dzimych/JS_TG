@@ -155,37 +155,37 @@ function CreateIdPerson(userId)
 
 
 
-
-
-window.addEventListener('load', function () {
-    const webApp = Telegram.WebApp;
-
-    //console.log('Telegram WebApp Data:', webApp.initData); // Отладочная информация
-    //console.log('User Info:', webApp.initDataUnsafe); // Данные пользователя
-    webApp.background('#FFFFFF'); // Устанавливает цвет фона
-    // Установите настройки
-    webApp.close(); // Разворачивает Web App
-    
-
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
-    // xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    //
-    // var data = JSON.stringify({ userId: id, transferPersonId: transfersPersonsIds });
-    // var data = JSON.stringify("2124");
-
-
-    fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: "id", transfersPersonsIds: "transfersPersonsIds" }),
-        keepalive: true, // Важный параметр
-    });
-
-    //xhr.send(data);
-});
+//
+//
+// window.addEventListener('load', function () {
+//     const webApp = Telegram.WebApp;
+//
+//     //console.log('Telegram WebApp Data:', webApp.initData); // Отладочная информация
+//     //console.log('User Info:', webApp.initDataUnsafe); // Данные пользователя
+//     webApp.background('#FFFFFF'); // Устанавливает цвет фона
+//     // Установите настройки
+//     webApp.close(); // Разворачивает Web App
+//    
+//
+//     // var xhr = new XMLHttpRequest();
+//     // xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
+//     // xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//     //
+//     // var data = JSON.stringify({ userId: id, transferPersonId: transfersPersonsIds });
+//     // var data = JSON.stringify("2124");
+//
+//
+//     fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ userId: "id", transfersPersonsIds: "transfersPersonsIds" }),
+//         keepalive: true, // Важный параметр
+//     });
+//
+//     //xhr.send(data);
+// });
 
 //
 // function sendDataToServer() {
@@ -201,3 +201,21 @@ window.addEventListener('load', function () {
 //         keepalive: true, // Гарантирует отправку запроса
 //     });
 // }
+
+window.addEventListener("visibilitychange",function () {
+    webApp.OnEvent('close', () => {
+        // const id = localStorage.getItem('userId');
+        // const transfersPersonsIds = people[id];
+
+
+        fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+            },
+            body: JSON.stringify({userId: "id", transfersPersonsIds: "Array.from(transfersPersonsIds)"}),
+            keepalive: true,
+        });
+
+    })
+});
