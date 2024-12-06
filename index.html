@@ -25,18 +25,35 @@
 <script>
     const webApp = Telegram.WebApp;
     console.log('Telegram WebApp Data:', webApp.initData);
-    webApp.setBackgroundColor('#FFFFFF');  // Устанавливаем белый фон
-    webApp.expand(); // Разворачиваем приложение
+    webApp.backgroundColor('#FFFFFF');  // Устанавливаем белый фон
+    
 
 
-    fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: "id", transfersPersonsIds: "transfersPersonsIds" }),
-        keepalive: true, // Важный параметр
+    // fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ userId: "id", transfersPersonsIds: "transfersPersonsIds" }),
+    //     keepalive: true, // Важный параметр
+    // });
+
+    webApp.onEvent('close', () => {
+        // const id = localStorage.getItem('userId');
+        // const transfersPersonsIds = people[id];
+
+        
+            fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userId: "id", transfersPersonsIds: "Array.from(transfersPersonsIds)" }),
+                keepalive: true,
+            });
+        
     });
+    
 </script>
 
 

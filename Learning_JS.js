@@ -146,6 +146,17 @@ function CreateIdPerson(userId)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 window.addEventListener('load', function () {
     const webApp = Telegram.WebApp;
 
@@ -176,21 +187,17 @@ window.addEventListener('load', function () {
     //xhr.send(data);
 });
 
-Telegram.WebApp.onEvent('close', function () {
-    
-    sendDataToServer();
-});
-
-function sendDataToServer() {
-    //const id = localStorage.getItem('userId');
-    //const transfersPersonsIds = people[id];
-
-    fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json;charset=UTF-8",
-        },
-        body: JSON.stringify("123123123"),
-        keepalive: true, // Гарантирует отправку запроса
-    });
-}
+//
+// function sendDataToServer() {
+//     //const id = localStorage.getItem('userId');
+//     //const transfersPersonsIds = people[id];
+//
+//     fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json;charset=UTF-8",
+//         },
+//         body: JSON.stringify("123123123"),
+//         keepalive: true, // Гарантирует отправку запроса
+//     });
+// }
