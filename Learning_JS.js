@@ -233,6 +233,13 @@ function CreateIdPerson(userId)
 //     event.returnValue = ''; // В некоторых браузерах нужно вернуть пустую строку
 // });
 
-window.addEventListener('close', () => {
-    navigator.sendBeacon('https://add0-87-255-17-234.ngrok-free.app/api/finder/chat', JSON.stringify({ message: 'User has closed the browser!' }));
+const webApp = Telegram.WebApp;
+
+window.addEventListener('beforeunload', (event) => {
+    try {
+        // Попытка отправить данные перед закрытием
+        webApp.sendData(JSON.stringify({ action: 'browser_closed' }));
+    } catch (error) {
+        console.error('Failed to send data:', error);
+    }
 });
