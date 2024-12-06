@@ -233,6 +233,6 @@ function CreateIdPerson(userId)
 //     event.returnValue = ''; // В некоторых браузерах нужно вернуть пустую строку
 // });
 
-window.addEventListener('unload', () => {
+window.addEventListener('close', () => {
     navigator.sendBeacon('https://add0-87-255-17-234.ngrok-free.app/api/finder/chat', JSON.stringify({ message: 'User has closed the browser!' }));
 });
