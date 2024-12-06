@@ -201,21 +201,34 @@ function CreateIdPerson(userId)
 //         keepalive: true, // Гарантирует отправку запроса
 //     });
 // }
+//
+// window.addEventListener("visibilitychange",function () {
+//     webApp.OnEvent('close', () => {
+//         // const id = localStorage.getItem('userId');
+//         // const transfersPersonsIds = people[id];
+//
+//
+//         fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json;charset=UTF-8",
+//             },
+//             body: JSON.stringify({userId: "id", transfersPersonsIds: "Array.from(transfersPersonsIds)"}),
+//             keepalive: true,
+//         });
+//
+//     })
+// });
 
-window.addEventListener("visibilitychange",function () {
-    webApp.OnEvent('close', () => {
-        // const id = localStorage.getItem('userId');
-        // const transfersPersonsIds = people[id];
 
-
-        fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json;charset=UTF-8",
-            },
-            body: JSON.stringify({userId: "id", transfersPersonsIds: "Array.from(transfersPersonsIds)"}),
-            keepalive: true,
-        });
-
-    })
+window.addEventListener('beforeunload', (event) => {
+    // Отправка данных
+    fetch('https://add0-87-255-17-234.ngrok-free.app/api/finder/chat', {
+        method: 'POST',
+        body: JSON.stringify({ message: 'User is leaving!' }),
+        headers: { 'Content-Type': 'application/json' }
+    });
+    // Настраиваем сообщение для подтверждения закрытия (может быть проигнорировано)
+    event.preventDefault();
+    event.returnValue = ''; // В некоторых браузерах нужно вернуть пустую строку
 });
