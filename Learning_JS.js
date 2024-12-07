@@ -220,20 +220,15 @@ function CreateIdPerson(userId)
 //     })
 // });
 
-//
-// window.addEventListener('beforeunload', (event) => {
-//     // Отправка данных
-//     fetch('https://add0-87-255-17-234.ngrok-free.app/api/finder/chat', {
-//         method: 'POST',
-//         body: JSON.stringify({ message: 'User is leaving!' }),
-//         headers: { 'Content-Type': 'application/json' }
-//     });
-//     // Настраиваем сообщение для подтверждения закрытия (может быть проигнорировано)
-//     event.preventDefault();
-//     event.returnValue = ''; // В некоторых браузерах нужно вернуть пустую строку
-// });
 
-window.addEventListener('unload', () => {
-    const data = JSON.stringify({ action: 'browser_closed', timestamp: Date.now() });
-    navigator.sendBeacon('https://add0-87-255-17-234.ngrok-free.app/api/finder/chat', data);
+window.addEventListener('beforeunload', (event) => {
+    // Отправка данных
+    fetch('https://add0-87-255-17-234.ngrok-free.app/api/finder/chat', {
+        method: 'POST',
+        body: JSON.stringify({ message: 'User is leaving!' }),
+        headers: { 'Content-Type': 'application/json' }
+    });
+    // Настраиваем сообщение для подтверждения закрытия (может быть проигнорировано)
+    event.preventDefault();
+    event.returnValue = ''; // В некоторых браузерах нужно вернуть пустую строку
 });
