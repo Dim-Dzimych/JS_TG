@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <link href="css/layout.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link href="Learning_CSS.css" rel="stylesheet">
+    <title>Telegram-Lubol-bot</title>
+</head>
+
+<!--<script src="https://cdn.jsdelivr.net/npm/@twa-dev/sdk/dist/index.umd.js"></script>-->
+<!--<script>-->
+<!--    const app = window.Telegram.WebApp;-->
+<!--    console.log('Telegram WebApp initialized:', app);-->
+<!--</script>-->
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="/JS_Csharp_Checkapp/TGMiniAppsJsSDK-master/telegram-web-app.js"></script>
+<script src="BackHandler.js"></script>
+<script src="Learning_JS.js"></script>
+
+
+<script>
+    const webApp = Telegram.WebApp;
+    console.log('Telegram WebApp Data:', webApp.initData);
+    webApp.backgroundColor('#FFFFFF');  // Устанавливаем белый фон
+</script>
+
+
+<body>
+<div class = "start-screen" id ="startScreen">
+    <img src="startScreen.jpg" alt="StartScreen">
+</div>
+<div class="container" id="container">
+    <div class="person">
+        <div class="card" id="card">
+            <div class="card-upper-info">
+                <h2 class="name-Up" id="nameUp">Анастасия, 25</h2>
+                <img src="iconExpand.svg" alt="IconExpand" class="card-expand" id="arrowIcon" onclick="toggleArrow(this)">
+            </div>
+            <img src="photo1.jpg" alt="Person picture" class="card-photo" id = "cardPhoto">
+            <div class="card-info">
+                <h2>Анастасия, 25</h2>
+                
+                <img src="icon_location.svg" alt="Location picture" class="card-photo-location">
+                
+                <h3 class = "card-photo-place">
+                    Москва
+                </h3>
+                
+                <img src="iconLikeNonActive.svg"  class="icon_like" id="iconLike" onclick="like(this)">
+            </div>
+            <div class="scroll-view" id ="scrollContent"  onclick="toggleArrow()">
+                <div class="tags" id = "tagsInfo">
+                    <p>Москва</p>
+                    <p>Дизайнер</p>
+                    <p>Рак</p>
+                    <p>Дизайнер</p>
+                    
+                </div>
+                <div class="about" id ="about">
+                    <span id="aboutTitle">О себе</span>
+                    <p id = "aboutBasic">фффффффффффффф   ффффффф фкрасивая дфывываушка Настя люблю кофе красивая девушк люблю кофе красивая девушка Настя люблю кофе
+                        </p>
+                </div>
+               
+            </div>
+            
+        </div>
+       <script>
+           console.log("START INITIALIZEW")
+       initializeBack();    
+       </script>
+<!--        <button onclick="addPerson()">Добавить еще одного человека</button>-->
+       
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,15 @@
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/bin/Debug/net6.0/Web_interface_JS
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/bin/Debug/net6.0/Web_interface_JS.deps.json
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/bin/Debug/net6.0/Web_interface_JS.runtimeconfig.json
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/bin/Debug/net6.0/Web_interface_JS.dll
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/bin/Debug/net6.0/Web_interface_JS.pdb
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/Web_interface_JS.csproj.AssemblyReference.cache
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/Web_interface_JS.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/Web_interface_JS.AssemblyInfoInputs.cache
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/Web_interface_JS.AssemblyInfo.cs
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/Web_interface_JS.csproj.CoreCompileInputs.cache
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/Web_interface_JS.dll
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/refint/Web_interface_JS.dll
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/Web_interface_JS.pdb
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/Web_interface_JS.genruntimeconfig.cache
+/Users/dzmitryhastsilovich/RiderProjects/JS_Csharp_Checkapp/Web_interface_JS/obj/Debug/net6.0/ref/Web_interface_JS.dll
