@@ -145,7 +145,7 @@ const UI = {
 const Events = {
     handleButtonClick: function(buttonNumber, userId, transferPersonId) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
+        xhr.open("POST", "https://8cbb-57-128-192-59.ngrok-free.app/api/finder/chat", true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         var data = JSON.stringify({ userId: userId, transferPersonId: transferPersonId });
@@ -163,7 +163,7 @@ const Data = {
 console.log("BEFORE REQUEST")
         
         var infoRequest = new XMLHttpRequest();
-        infoRequest.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/info", true);
+        infoRequest.open("POST", "https://8cbb-57-128-192-59.ngrok-free.app/api/finder/info", true);
         infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         infoRequest.onreadystatechange = function () {
@@ -233,4 +233,7 @@ window.addEventListener("scroll", function () {
 
 // Вызов функции инициализации при загрузке страницы
 window.onload = initializeBack;
+
+
+
 
