@@ -145,7 +145,7 @@ const UI = {
 const Events = {
     handleButtonClick: function(buttonNumber, userId, transferPersonId) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://8cbb-57-128-192-59.ngrok-free.app/api/finder/chat", true);
+        xhr.open("POST", "https://be3f-94-230-229-121.ngrok-free.app/api/finder/chat", true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         var data = JSON.stringify({ userId: userId, transferPersonId: transferPersonId });
@@ -222,13 +222,14 @@ function CreateBoxsLine(maxCount) {
 function initializeBack() {
     CreateBoxsLine(20);
     console.log("START IT")
+    handlePageBuilder;
 }
 
 // Обработчик прокрутки
-window.addEventListener("scroll", function () {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        Data.handlePageBuilder();
-    }
+window.addEventListener("scroll", function () { // НА ВРЕМЯ ТЕСТА ОСТАНОВИЛ ЧТОБЫ ПРИЛЕТАЛ ТОЛЬКО ОДИН ЗАПРОС
+    // if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    //     Data.handlePageBuilder();
+    // }
 });
 
 // Вызов функции инициализации при загрузке страницы
