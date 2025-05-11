@@ -163,7 +163,7 @@ const Data = {
 console.log("BEFORE REQUEST")
         
         var infoRequest = new XMLHttpRequest();
-        infoRequest.open("POST", "https://8cbb-57-128-192-59.ngrok-free.app/api/finder/info", true);
+        infoRequest.open("POST", "https://be3f-94-230-229-121.ngrok-free.app/api/finder/info", true);
         infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         infoRequest.onreadystatechange = function () {
