@@ -222,7 +222,7 @@ function CreateBoxsLine(maxCount) {
 function initializeBack() {
     CreateBoxsLine(20);
     console.log("START IT")
-    handlePageBuilder;
+    //handlePageBuilder;
 }
 
 // Обработчик прокрутки
