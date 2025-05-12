@@ -60,9 +60,29 @@ h3 {
     display: none;
 }
 
-.card {
-    width: 361px;
-    position: relative;
+/*.card {*/
+/*    width: 361px;*/
+/*    position: relative;*/
+/*}*/
+card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.scroll-view {
+    width: 100%;
+    max-width: 400px;
+    position: absolute;
+    height: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 16px 16px 0 0;
+    transition: height 0.4s ease;
+    visibility: hidden; /* по умолчанию скрыт */
+    overflow: hidden; /* предотвратить отображение контента вне высоты */
 }
 .card-photo {
     height: 400px;
@@ -122,19 +142,19 @@ h3 {
     right: 20px;
 }
 
-.scroll-view {
-    position: absolute;
-    height: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 360px;
-    background-color: white;
-    border-radius: 16px 16px 0 0;
-    transition: height 0.4s ease;
-    visibility: hidden; /* по умолчанию скрыт */
-    overflow: hidden; /* предотвратить отображение контента вне высоты */
-}
+/*.scroll-view {*/
+/*    position: absolute;*/
+/*    height: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    width: 360px;*/
+/*    background-color: white;*/
+/*    border-radius: 16px 16px 0 0;*/
+/*    transition: height 0.4s ease;*/
+/*    visibility: hidden; !* по умолчанию скрыт *!*/
+/*    overflow: hidden; !* предотвратить отображение контента вне высоты *!*/
+/*}*/
 
 
 .tags {

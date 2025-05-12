@@ -191,7 +191,9 @@ console.log("BEFORE REQUEST")
             }
         };
         console.log("After REQUEST")
+       
         var data = JSON.stringify({ PersonName: idperson });
+        
         infoRequest.send(data);
     }
 };
