@@ -68,7 +68,34 @@ card {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
+    position: relative;
 }
+
+/*@media (min-width: 768px) {*/
+/*    .card {*/
+/*        width: 361px;*/
+/*        position: relative;*/
+/*        !/font-size: 18px;*!*!*/
+/*        !*padding: 20px;*!*/
+/*    }*/
+/*}*/
+
+/*ДОБАВИЛ КОНТАНЕР ДЛЯ ВЕБ ВЕРСИИ ЧТОБЫ НЕ РАСШИРЯЛИСЬ, ПРОВЕРИТЬ НА ТЕЛЕФОНЕ*/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 100vh;
+    padding: 16px;
+}
+/*.container {*/
+/*    width: 100%;*/
+/*    max-width: 400px;*/
+/*    margin: 0 auto;*/
+/*    padding: 16px;*/
+/*}*/
 
 .scroll-view {
     width: 100%;
@@ -199,6 +226,11 @@ card {
     color: #474747;
 
 }
+/*!*.container {*!*/
+/*!*    max-height: 100vh;*!*/
+/*!*    overflow-y: auto;*!*/
+/*}*/
+
 
 
 
