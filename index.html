@@ -45,21 +45,36 @@
             height: 100%;
             object-fit: cover;
         }
-        
-        /*@media (min-width: 768px) {*/
-        /*    .card {*/
-        /*        width: 361px;*/
-        /*        position: relative;*/
-        /*        height: 400px;*/
-        /*        margin: 20px;*/
-        /*        overflow: hidden;*/
-        /*        border-radius: 15px;*/
-        /*        box-shadow: 0 4px 8px rgba(0,0,0,0.2);*/
-        /*        background-color: #fff;*/
-        /*        !*font-size: 18px;*!*/
-        /*        !*padding: 20px;*!*/
-        /*    }*/
-        /*}*/
+
+        @media (min-width: 371px) {
+            .card {
+                width: 100px;
+                position: relative;
+                height: 400px;
+                margin: 20px;
+                overflow: hidden;
+                border-radius: 15px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                background-color: #fff;
+                /*font-size: 18px;*/
+                /*padding: 20px;*/
+            }
+        }
+        @media (min-width: 381px) {   /*ДЕСКТОП И МОБИЛКА СЮДА*/
+            .card {
+                width: 201px;
+                position: relative;
+                height: 400px;
+                margin: 20px;
+                overflow: hidden;
+                border-radius: 15px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                background-color: #fff;
+                /*font-size: 18px;*/
+                /*padding: 20px;*/
+
+            }
+        }
         @media (min-width: 391px) {
             .card {
                 width: 381px;
@@ -69,54 +84,21 @@
                 overflow: hidden;
                 border-radius: 15px;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                /*background-color: #fff;*/
-                background-color: green;
+                background-color: #fff;
                 /*font-size: 18px;*/
                 /*padding: 20px;*/
             }
         }
-        @media (min-width: 381px) {   /*ДЕСКТОП И МОБИЛКА СЮДА*/
+        @media (min-width: 768px) {
             .card {
-                width: 371px;
+                width: 381px;
                 position: relative;
                 height: 400px;
                 margin: 20px;
                 overflow: hidden;
                 border-radius: 15px;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                /*background-color: #fff;*/
-                background-color: black;
-                /*font-size: 18px;*/
-                /*padding: 20px;*/
-                
-            }
-        }
-        @media (min-width: 371px) {
-            .card {
-                width: 100%;
-                position: relative;
-                height: 400px;
-                margin: 20px;
-                overflow: hidden;
-                border-radius: 15px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                /*background-color: #fff;*/
-                background-color: yellow;
-                /*font-size: 18px;*/
-                /*padding: 20px;*/
-            }
-        }
-        @media (min-width: 71px) {
-            .card {
-                width: 61px;
-                position: relative;
-                height: 400px;
-                margin: 20px;
-                overflow: hidden;
-                border-radius: 15px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                /*background-color: #fff;*/
-                background-color: red;
+                background-color: #fff;
                 /*font-size: 18px;*/
                 /*padding: 20px;*/
             }
@@ -342,7 +324,9 @@
     </style>
 </head>
 <body>
-
+<script>
+    console.log("Ширина экрана: " + window.innerWidth);
+</script>
 
 <!--<div class="card">-->
 <!--    <img src="photo1.jpg" class ="my_photo" alt="Фото">-->
