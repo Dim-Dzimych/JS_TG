@@ -15,7 +15,7 @@
     <script>
         const webApp = Telegram.WebApp;
         console.log('Telegram WebApp Data:', webApp.initData);
-        webApp.backgroundColor('#FFFFFF');  // Устанавливаем белый фон
+        //webApp.backgroundColor('#FFFFFF');  // Устанавливаем белый фон
     </script>
     
     <style>
@@ -36,7 +36,8 @@
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            background-color: #fff;
+            /*background-color: #fff;*/
+            background-color: darkcyan;
         }
         
         .card > img {
@@ -76,7 +77,7 @@
         }
         @media (min-width: 381px) {   /*ДЕСКТОП И МОБИЛКА СЮДА*/
             .card {
-                width: 51px;
+                width: 100%;
                 position: relative;
                 height: 400px;
                 margin: 20px;
