@@ -5,7 +5,7 @@ body {
     line-height: 16px;
     color: #151413;
     background-color: black;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 .start-screen {
@@ -15,7 +15,7 @@ body {
     z-index: 100;
     opacity: 1;
     transition: opacity 1s ease-out;
-    
+
 }
 .start-screen img {
     max-width: 100%;
@@ -42,10 +42,10 @@ h3 {
     position: absolute;
     width: 16px;
     height: 20px;
-   bottom: 13px;
+    bottom: 13px;
     left: 18px;
-    
 }
+
 
 .card-expand {
     position: absolute;
@@ -55,10 +55,10 @@ h3 {
     height: 40px;
     z-index: 2;
 }
-.container {
-    position: relative;
-    display: none;
-}
+/*.container {*/
+/*    position: relative;*/
+/*    display: none;*/
+/*}*/
 
 /*.card {*/
 /*    width: 361px;*/
@@ -80,22 +80,14 @@ card {
 /*    }*/
 /*}*/
 
-/*ДОБАВИЛ КОНТАНЕР ДЛЯ ВЕБ ВЕРСИИ ЧТОБЫ НЕ РАСШИРЯЛИСЬ, ПРОВЕРИТЬ НА ТЕЛЕФОНЕ*/
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: auto;
-    max-height: 100vh;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
     padding: 16px;
+    overflow: hidden;
 }
-/*.container {*/
-/*    width: 100%;*/
-/*    max-width: 400px;*/
-/*    margin: 0 auto;*/
-/*    padding: 16px;*/
-/*}*/
 
 .scroll-view {
     width: 100%;
@@ -108,17 +100,17 @@ card {
     background-color: white;
     border-radius: 16px 16px 0 0;
     transition: height 0.4s ease;
-    visibility: hidden; /* по умолчанию скрыт */
-    overflow: hidden; /* предотвратить отображение контента вне высоты */
+    visibility: hidden; /* Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ ÑÐºÑ€Ñ‹Ñ‚ */
+    overflow: hidden; /* Ð¿Ñ€ÐµÐ´Ð¾Ñ‚Ð²Ñ€Ð°Ñ‚Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð½Ñ‚ÐµÐ½Ñ‚Ð° Ð²Ð½Ðµ Ð²Ñ‹ÑÐ¾Ñ‚Ñ‹ */
 }
 .card-photo {
     height: 400px;
     width: 100%;
     object-fit: cover;
     border-radius: 16px;
-    
+
 }
- .blur {
+.blur {
     filter:blur(3px);
 }
 
@@ -128,20 +120,20 @@ card {
     align-items: center;
     padding: 10px;
     position: relative;
-    
-    
+
+
 }
 .name-Up {
     font-family: "SFProDisplayRegular";
     position: absolute;
     top: 12px;
     left: 50%;
-    transform: translateX(-50%); /* Центрирует элемент по горизонтали */
-    text-align: center; /* Центрирует текст внутри элемента */
+    transform: translateX(-50%); 
+    text-align: center; 
     height: 40px;
     visibility: hidden;
     z-index: 2;
-    white-space: nowrap; /* Предотвращает перенос текста на другую строку */
+    white-space: nowrap;
 }
 
 
@@ -179,8 +171,8 @@ card {
 /*    background-color: white;*/
 /*    border-radius: 16px 16px 0 0;*/
 /*    transition: height 0.4s ease;*/
-/*    visibility: hidden; !* по умолчанию скрыт *!*/
-/*    overflow: hidden; !* предотвратить отображение контента вне высоты *!*/
+/*    visibility: hidden; !* Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ ÑÐºÑ€Ñ‹Ñ‚ *!*/
+/*    overflow: hidden; !* Ð¿Ñ€ÐµÐ´Ð¾Ñ‚Ð²Ñ€Ð°Ñ‚Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð½Ñ‚ÐµÐ½Ñ‚Ð° Ð²Ð½Ðµ Ð²Ñ‹ÑÐ¾Ñ‚Ñ‹ *!*/
 /*}*/
 
 
@@ -209,7 +201,7 @@ card {
 .about {
     visibility: hidden;
     margin-left: 4px;
-    
+
 }
 
 .about span {

@@ -1,91 +1,375 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <link href="css/layout.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Telegram-Lubol-bot</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="/JS_Csharp_Checkapp/TGMiniAppsJsSDK-master/telegram-web-app.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <link href="Learning_CSS.css" rel="stylesheet">
-    <title>Telegram-Lubol-bot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="Lubol_BackHandler.js"></script>
+    <script src="Lubol_ChattingHandler.js"></script>
+
+    <script>
+        const webApp = Telegram.WebApp;
+        console.log('Telegram WebApp Data:', webApp.initData);
+        webApp.backgroundColor('#FFFFFF');  // Устанавливаем белый фон
+    </script>
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f0f0f0;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin: 20px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background-color: #fff;
+        }
+
+        @media (min-width: 768px) {
+            .card {
+                width: 361px;
+                position: relative;
+                height: 400px;
+                margin: 20px;
+                overflow: hidden;
+                border-radius: 15px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                background-color: #fff;
+                /*font-size: 18px;*/
+                /*padding: 20px;*/
+            }
+        }
+
+
+        .card > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Блюр-оверлей */
+        .image-blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .centered-name {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px black;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            
+            font-family: "SFProDisplayRegular";
+        }
+
+        .bottom-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 8px 12px 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px black;
+            
+            /*backdrop-filter: blur(6px);*/
+            /*background: rgba(0, 0, 0, 0.2);*/
+            
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            
+            /*background: rgba(0, 0, 0, 0.3); !* Тёмный прозрачный фон *!*/
+            /*backdrop-filter: blur(10px);   !* Блюр заднего фона *!*/
+            /*border-bottom-left-radius: 10px;*/
+            /*border-bottom-right-radius: 10px;*/
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            z-index: 2;
+            
+        }
+
+
+        .heart-button {
+            width: 52px;
+            height: 52px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+        }
+       
+
+        .toggle-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            /*border-radius: 50%;*/
+            padding: 8px;
+            /*cursor: pointer;*/
+            font-size: 18px;
+            z-index: 4;
+        }
+
+        .slide-up {
+            position: absolute;
+            /*bottom: -50%;*/
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%; /*управляем напрямую высотой */
+            transform: translateY(100%);
+            background-color:#FEFEFE;
+            color: black;
+            padding: 8px 12px 4px 12px;
+            
+            box-sizing: border-box;
+            transition: transform 0.4s ease;
+            outline: none;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            z-index: 4;
+        }
+        .slide-up p {
+            font-family: "SFProText-Regular";
+            font-size: 18px;
+        }
+        .slide-up span {
+            font-family: "SFProText-Medium";
+            font-size: 20px;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap:2px;
+            row-gap: 3px;
+            justify-content: left;
+            width: 100%;
+            box-sizing: border-box;
+            padding-bottom: 12px;
+            /*visibility: hidden;*/
+        }
+
+        .tags p {
+            font-family: "SFProText-Light";
+            margin:3px;
+            border: 0.5px solid #777FB4;
+            background-color:#EBEDFF;
+            color: #474747;
+            border-radius: 16px;
+            padding: 3px 12px 4.5px 12px;
+            font-size: 18px;
+        }
+        /* Активное состояние */
+        .card.active .image-blur-overlay {
+            opacity: 1;
+        }
+
+        .centered-name {
+           
+
+        }
+        .card.active .centered-name {
+            opacity: 1;
+        }
+        
+       
+        .card.active .slide-up {
+            transform: translateY(0%); /* Вместо 50% */
+            bottom: 0;
+        }
+        
+        .toggle-button img {
+            width: 40px;
+            height: 40px;
+            
+        }
+        .slide-up {
+            /*bottom: -50%;*/
+            /*transition: bottom 0.3s ease;*/
+        }
+       
+        .card.slide-visible .slide-up {
+            /*bottom: 0;*/
+        }
+        
+        .text-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .name-age {
+            
+            font-family: "SFProDisplayRegular";
+            font-size: 28px;
+            margin-bottom: 4px;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .location-icon {
+            width: 16px;
+            height: 20px;
+            margin-right: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+       .mosckva {
+           font-family: "SFProText-Light";
+           font-size:20px ;
+       }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.3);
+            border-radius: 0px;
+        }
+
+        @font-face {
+            font-family: "SFProDisplayRegular";
+            src: url("sf-pro-display/SFPRODISPLAYREGULAR.otf") format("truetype");
+
+        }
+        @font-face {
+            font-family: "SFProText-Regular";
+            src: url("sf-pro-display/SFProText-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "SFProText-Medium";
+            src: url("sf-pro-display/SFProText-Medium.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "SFProText-Light";
+            src: url("sf-pro-display/SFProText-Light.ttf") format("truetype");
+        }
+
+    </style>
 </head>
+<body>
 
-<!--<script src="https://cdn.jsdelivr.net/npm/@twa-dev/sdk/dist/index.umd.js"></script>-->
-<!--<script>-->
-<!--    const app = window.Telegram.WebApp;-->
-<!--    console.log('Telegram WebApp initialized:', app);-->
-<!--</script>-->
 
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src="/JS_Csharp_Checkapp/TGMiniAppsJsSDK-master/telegram-web-app.js"></script>
-<script src="BackHandler.js"></script>
-<script src="Learning_JS.js"></script>
+<!--<div class="card">-->
+<!--    <img src="photo1.jpg" class ="my_photo" alt="Фото">-->
+<!--    -->
+<!--    &lt;!&ndash; Блюр-оверлей &ndash;&gt;-->
+<!--    <div class="image-blur-overlay"></div>-->
 
+<!--    &lt;!&ndash; Заголовок сверху по центру &ndash;&gt;-->
+<!--    <div class="centered-name">Анастасия, 25</div>-->
+<!--    -->
+<!--    <div class="bottom-info">-->
+<!--        <div class="text-info">-->
+<!--            <div class="name-age">Анастасия, 25</div>-->
+<!--            <div class="location">-->
+<!--                <img src="icon_location.svg" class="location-icon" alt="Гео" >-->
+<!--                <span class="mosckva">Москва </span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <button class="heart-button">-->
+<!--            <img src="iconLikeNonActive.svg" alt="лайк">-->
+<!--        </button>-->
+<!--    </div>-->
+
+<!--    <button class="toggle-button">-->
+<!--        <img src="iconExpand.svg" alt="IconExpand" >-->
+<!--    </button>-->
+<!--    <div class="slide-up">-->
+<!--        -->
+<!--        <div class="tags" id = "tagsInfo">-->
+<!--            <p>Москва</p>-->
+<!--            <p>Дизайнер</p>-->
+<!--            <p>Рак</p>-->
+<!--            <p>Дизайнер</p>-->
+<!--        </div>-->
+<!--        <span id="aboutTitle">О себе</span>-->
+<!--        <p >Я ЛЮБЛЮ жизнь и все с ней связано. Все очень классные. -->
+<!--        </p>-->
+<!--    </div>-->
+<!--</div>-->
 
 <script>
-    const webApp = Telegram.WebApp;
-    console.log('Telegram WebApp Data:', webApp.initData);
-    webApp.backgroundColor('#FFFFFF');  // Устанавливаем белый фон
-</script>
-
-
-<body>
-<div class = "start-screen" id ="startScreen">
-    <img src="startScreen.jpg" alt="StartScreen">
-</div>
-<div class="container" id="container">
     
-    <div class="person">
-        
-        <div class="card">
-            <div class="card-upper-info">
-                <h2 class="name-Up" id="nameUp">Анастасия, 25</h2>
-                <img src="iconExpand.svg" alt="IconExpand" class="card-expand" id="arrowIcon" onclick="toggleArrow(this)">
-            </div>
-            
-            <img src="photo1.jpg" alt="Person picture" class="card-photo">
-            
-            <div class="card-info">
-                <h2>Анастасия, 25</h2>
-                
-                <img src="icon_location.svg" alt="Location picture" class="card-photo-location">
-                
-                <h3 class = "card-photo-place">
-                    Москва
-                </h3>
-                
-                <img src="iconLikeNonActive.svg"  class="icon_like" id="iconLike" onclick="like(this)">
-            </div>
-            <div class="scroll-view" id ="scrollContent"  onclick="toggleArrow()">
-                <div class="tags" id = "tagsInfo">
-                    <p>Москва</p>
-                    <p>Дизайнер</p>
-                    <p>Рак</p>
-                    <p>Дизайнер</p>
-                    
-                </div>
-                <div class="about" id ="about">
-                    <span id="aboutTitle">О себе</span>
-                    <p id = "aboutBasic">фффффффффффффф   ффффффф фкрасивая дфывываушка Настя люблю кофе красивая девушк люблю кофе красивая девушка Настя люблю кофе
-                        </p>
-                </div>
-               
-            </div>
-            
-        </div>
-       <script>
-           console.log("START INITIALIZEW")
-       //initializeBack();    
-       </script>
-<!--        <button onclick="addPerson()">Добавить еще одного человека</button>-->
-       
-    </div>
-</div>
+    
+    // document.querySelectorAll('.toggle-button').forEach(button => {
+    //     button.addEventListener('click', () => {
+    //         const card = button.closest('.card');
+    //         card.classList.toggle('active');
+    //        
+    //         const icon = button.querySelector('img');
+    //         icon.src = card.classList.contains('active')
+    //             ? 'iconHide.svg'
+    //             : 'iconExpand.svg';
+    //     });
+    // });
+    
+    //
+    // document.querySelectorAll('.heart-button').forEach(button => {
+    //     button.addEventListener('click', () => {
+    //         const card = button.closest('.card');
+    //         card.classList.toggle('liked');
+    //
+    //         const icon = button.querySelector('img');
+    //         if (card.classList.contains('liked')) {
+    //             icon.src = 'iconLikeActive.svg'; // Вторая картинка сердечка
+    //         } else { 
+    //             icon.src = 'iconLikeNonActive.svg'; // Первая картинка сердечка
+    //         }
+    //     });
+    // });
 
-
+   
+</script>
 
 </body>
 </html>
 
 
+
+<!--<div class="bottom-info">-->
+<!--    <span>Живу в Москве 25 лет</span>-->
+<!--    <button class="heart-button">-->
+<!--        <img src="iconLikeNonActive.svg" alt="Toggle" >-->
+<!--    </button>-->
+<!--</div>-->
