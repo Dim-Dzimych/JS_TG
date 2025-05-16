@@ -97,7 +97,7 @@ const UI = {
 
         const heartImg = document.createElement('img');
         heartImg.src = 'iconLikeNonActive.svg';
-        heartImg.alt = 'лайк';
+        heartImg.alt = 'like';
         heartImg.setAttribute('data-user-id', userId);
         heartImg.setAttribute('transfer-person-id', transferPersonId);
         heartButton.appendChild(heartImg);
