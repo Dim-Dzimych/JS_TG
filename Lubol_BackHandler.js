@@ -1,5 +1,8 @@
 // Модуль создания карточек профиля с данных от бека
 
+// Вызов функции инициализации при загрузке страницы
+// window.onload = initializeBack;
+
 // imageSrc - адрес фото
 // altText - текст под фото
 // buttonText - текст кнопки
@@ -281,8 +284,27 @@ window.addEventListener("scroll", function () { // НА ВРЕМЯ ТЕСТА О
     // }
 });
 
-// Вызов функции инициализации при загрузке страницы
-window.onload = initializeBack;
+
+// window.onload = function () {
+//     initializeBack();
+//
+//     // Убираем заставку через 4 секунды
+//     setTimeout(() => {
+//         const splash = document.getElementById("splash-screen");
+//         splash.style.transition = "opacity 0.5s ease";
+//         splash.style.opacity = "0";
+//
+//         // Удалим элемент после исчезновения
+//         setTimeout(() => {
+//             splash.remove();
+//         }, 100);
+//     }, 4000);
+// };
+
+
+
+
+
 
 
 
