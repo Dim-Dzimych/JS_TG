@@ -110,6 +110,10 @@ const UI = {
         // });
         
         heartButton.addEventListener('click', () => {
+            if (card.classList.contains("liked"))
+            {
+                return;
+            }
             const liked = card.classList.toggle('liked');
             heartImg.src = liked ? 'iconLikeActive.svg' : 'iconLikeNonActive.svg';
 
@@ -215,7 +219,9 @@ const Data = {
                 for (let person of result.person) {
                     const imageUrl = person.photo === 'AA==' ? './Он.jpg' :
                         person.photo === 'AAA=' ? './Она.jpg' :
+                            person.photo === 'IncorrectEnter' ? './IncorrectEnter.jpg' :
                             `data:image/jpeg;base64,${person.photo}`;
+                    console.log(person.photo)
 
                     UI.createBox(
                         imageUrl,                          // imageSrc

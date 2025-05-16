@@ -55,31 +55,43 @@ const people = {};
 // нажатия на сердечко
 function like(like,userId,transferPersonId)
 {
-    if (like.src.includes("iconLikeNonActive.svg"))
-    {
-        like.src = "iconLikeActive.svg"
-    } else
-    {
-        like.src = "iconLikeNonActive.svg";
-    }
+    if (like.classList.contains("liked")) {
+    return;
+}
 
-    if (!people[userId])
-    {
+    // Меняем иконку на активную
+    like.src = "iconLikeActive.svg";
+
+    // Добавляем лайк в people
+    if (!people[userId]) {
         people[userId] = new Set();
-        people[userId].add(transferPersonId);
-        CreateIdPerson(userId);
-    } 
-    else if (people[userId].has(transferPersonId))
-    {
-        people[userId].delete(transferPersonId);
-        if (people[userId].size === 0){
-            delete people[userId]
-        }
-    }
-    else {
-        people[userId].add(transferPersonId);
     }
 
+    people[userId].add(transferPersonId);
+
+    // Вызываем нужную логику (например, для отправки на сервер)
+    CreateIdPerson(userId);
+    // if (like.src.includes("iconLikeNonActive.svg")) {
+    //     like.src = "iconLikeActive.svg"
+    //
+    //     // else
+    //     // {
+    //     //     like.src = "iconLikeNonActive.svg";
+    //     // }
+    //
+    //     if (!people[userId]) {
+    //         people[userId] = new Set();
+    //         people[userId].add(transferPersonId);
+    //         CreateIdPerson(userId);
+    //     } else if (people[userId].has(transferPersonId)) {
+    //         people[userId].delete(transferPersonId);
+    //         if (people[userId].size === 0) {
+    //             delete people[userId]
+    //         }
+    //     } else {
+    //         people[userId].add(transferPersonId);
+    //     }
+    // }
 
 }
 
