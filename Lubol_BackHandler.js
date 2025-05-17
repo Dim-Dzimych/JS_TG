@@ -238,12 +238,30 @@ const Data = {
                         person.proffesion,                // proffesion
                         person.aboutInfo                  // aboutInfo
                     );
+                    
+                     addShownId(person.transferPersonId);
                 }
             }
         };
+        console.log("IDPERSON start");
+        var idToSend = idperson;
+        
+        const shownIds = getShownIds()
+        if(shownIds != null)
+        {
+            const idParam = shownIds.join('/')
 
-        const requestData = JSON.stringify({ PersonName: idperson });
+            const combinedParam = idperson + (idParam ? `/${idParam}` : '');
+            console.log("IDPERSON CHANGE");
+           
+            idToSend = combinedParam;
+        }
+
+        const requestData = JSON.stringify({ PersonName: idToSend });
+
+
         infoRequest.send(requestData);
+        console.log("IDPERSON AFTER");
     }
 };
 
@@ -272,8 +290,13 @@ function CreateBoxsLine(maxCount) {
 
 // Инициализация
 function initializeBack() {
-    CreateBoxsLine(20);
+    CreateBoxsLine(5);
+    
     console.log("START IT")
+    
+    if (!sessionStorage.getItem('shownIds')) {
+        sessionStorage.setItem('shownIds', JSON.stringify([]));
+    }
     //handlePageBuilder;
 }
 
@@ -284,23 +307,17 @@ window.addEventListener("scroll", function () { // НА ВРЕМЯ ТЕСТА О
     // }
 });
 
+function addShownId(id) {
+    let shownIds = JSON.parse(sessionStorage.getItem('shownIds'));
+    if (!shownIds.includes(id)) {
+        shownIds.push(id);
+        sessionStorage.setItem('shownIds', JSON.stringify(shownIds));
+    }
+}
 
-// window.onload = function () {
-//     initializeBack();
-//
-//     // Убираем заставку через 4 секунды
-//     setTimeout(() => {
-//         const splash = document.getElementById("splash-screen");
-//         splash.style.transition = "opacity 0.5s ease";
-//         splash.style.opacity = "0";
-//
-//         // Удалим элемент после исчезновения
-//         setTimeout(() => {
-//             splash.remove();
-//         }, 100);
-//     }, 4000);
-// };
-
+function getShownIds() {
+    return JSON.parse(sessionStorage.getItem('shownIds'));
+}
 
 
 

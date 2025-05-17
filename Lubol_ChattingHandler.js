@@ -96,19 +96,19 @@ function like(like,userId,transferPersonId)
 }
 
 // start view
-window.addEventListener('load', function () {
-    setTimeout(function () {
-        const splashScreen = document.getElementById('startScreen');
-        const appContent = document.getElementById('container');
-
-        splashScreen.style.opacity = '0';
-
-        setTimeout(function () {
-            splashScreen.style.display = 'none';
-            appContent.style.display = 'block';
-        }, 500);
-    }, 450);
-});
+// window.addEventListener('load', function () {
+//     setTimeout(function () {
+//         const splashScreen = document.getElementById('startScreen');
+//         const appContent = document.getElementById('container');
+//
+//         splashScreen.style.opacity = '0';
+//
+//         setTimeout(function () {
+//             splashScreen.style.display = 'none';
+//             appContent.style.display = 'block';
+//         }, 500);
+//     }, 450);
+// });
 
 
 
