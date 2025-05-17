@@ -225,7 +225,7 @@ const Data = {
                             person.photo === 'IncorrectEnter' ? './IncorrectEnter.jpg' :
                             `data:image/jpeg;base64,${person.photo}`;
                     console.log(person.photo)
-                    if (person.photo === IncorrectEnter)
+                    if (person.photo === "IncorrectEnter")
                     {
                         stopperScroll = true;
                     }
@@ -247,6 +247,7 @@ const Data = {
                 }
             }
         };
+        
         console.log("IDPERSON start");
         var idToSend = idperson;
         
@@ -260,6 +261,7 @@ const Data = {
            
             idToSend = combinedParam;
         }
+        
         const requestData = JSON.stringify({ PersonName: idToSend });
 
         infoRequest.send(requestData);
