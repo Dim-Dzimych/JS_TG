@@ -204,7 +204,7 @@ const Events = {
         xhr.send(data);
     }
 };
-
+let stopperScroll = false;
 // Модуль полученмя данных с бека
 const Data = {
     handlePageBuilder: function () {
@@ -225,6 +225,10 @@ const Data = {
                             person.photo === 'IncorrectEnter' ? './IncorrectEnter.jpg' :
                             `data:image/jpeg;base64,${person.photo}`;
                     console.log(person.photo)
+                    if (person.photo === IncorrectEnter)
+                    {
+                        stopperScroll = true;
+                    }
 
                     UI.createBox(
                         imageUrl,                          // imageSrc
@@ -256,9 +260,7 @@ const Data = {
            
             idToSend = combinedParam;
         }
-
         const requestData = JSON.stringify({ PersonName: idToSend });
-
 
         infoRequest.send(requestData);
         console.log("IDPERSON AFTER");
@@ -290,7 +292,7 @@ function CreateBoxsLine(maxCount) {
 
 // Инициализация
 function initializeBack() {
-    CreateBoxsLine(5);
+    CreateBoxsLine(10);  /*МАЧ КАУНТ НЕ РАБОТАЕТ*/
     
     console.log("START IT")
     
@@ -299,12 +301,27 @@ function initializeBack() {
     }
     //handlePageBuilder;
 }
-
+let isLoading = false;
 // Обработчик прокрутки
-window.addEventListener("scroll", function () { // НА ВРЕМЯ ТЕСТА ОСТАНОВИЛ ЧТОБЫ ПРИЛЕТАЛ ТОЛЬКО ОДИН ЗАПРОС
-    // if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    //     Data.handlePageBuilder();
-    // }
+window.addEventListener("scroll", () => {
+    if (isLoading || stopperScroll) return; // Защита от повторных вызовов
+    
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const fullHeight = document.documentElement.scrollHeight;
+
+    //  доскроллил до 80% страницы
+    if ((scrollTop + windowHeight) / fullHeight > 0.8) {
+        isLoading = true;
+        
+        CreateBoxsLine(10); 
+        
+        console.log("SCROLL START")
+        
+        setTimeout(() => {
+            isLoading = false;
+        }, 5000); // cчетчик временм задержки между вызовами
+    }
 });
 
 function addShownId(id) {
