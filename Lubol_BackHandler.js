@@ -261,9 +261,9 @@ const Data = {
            
             idToSend = combinedParam;
         }
-        else{ /*Только один раз при отправке id отправителя */
-            addShownId(idperson);
-        }
+         else { /*Только один раз при отправке id отправителя */
+             addShownId(idperson);
+         }
         
         const requestData = JSON.stringify({ PersonName: idToSend });
 
@@ -337,7 +337,13 @@ window.addEventListener("scroll", () => {
 
 function addShownId(id) {
     console.log("ADDSHOWNID START- " + {id})
+    
     let shownIds = JSON.parse(sessionStorage.getItem('shownIds'));
+    
+    if (!shownIds) {
+        shownIds = [];
+    }
+
     if (!shownIds.includes(id)) {
         shownIds.push(id);
         console.log("ADDSHOWNID PUSHED- " + {id})
