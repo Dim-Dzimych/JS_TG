@@ -274,27 +274,30 @@ const Data = {
 function CreateBoxsLine(maxCount) {
     if (UI.buttonCounter <= maxCount) {
         Data.handlePageBuilder();
-    } else {
-        const centerText = document.createElement('p');
-        centerText.innerHTML = 'Больше Людей не найдено в вашем регионе.<br>Подождите или поменяйте регион';
-        centerText.style.textAlign = 'center';
-        centerText.style.color = 'red';
-        centerText.style.fontWeight = 'bold';
-        centerText.style.backgroundColor = 'yellow';
-        centerText.style.marginTop = '5vh';
-        centerText.style.fontSize = '21px';
-        centerText.style.padding = '15px';
-        centerText.style.borderRadius = '15px';
-
-        document.body.appendChild(centerText);
-        document.body.style.maxHeight = '100vh';
-    }
+     } 
+    //else {
+    //     const centerText = document.createElement('p');
+    //     centerText.innerHTML = 'Больше Людей не найдено в вашем регионе.<br>Подождите или поменяйте регион';
+    //     centerText.style.textAlign = 'center';
+    //     centerText.style.color = 'red';
+    //     centerText.style.fontWeight = 'bold';
+    //     centerText.style.backgroundColor = 'yellow';
+    //     centerText.style.marginTop = '5vh';
+    //     centerText.style.fontSize = '21px';
+    //     centerText.style.padding = '15px';
+    //     centerText.style.borderRadius = '15px';
+    //
+    //     document.body.appendChild(centerText);
+    //     document.body.style.maxHeight = '100vh';
+    // }
 }
 
 
 // Инициализация
 function initializeBack() {
-    CreateBoxsLine(10);  /*МАЧ КАУНТ НЕ РАБОТАЕТ*/
+    
+    CreateBoxsLine(10); 
+    UI.buttonCounter = 0;
     
     console.log("START IT")
     
@@ -304,25 +307,28 @@ function initializeBack() {
     //handlePageBuilder;
 }
 let isLoading = false;
+
 // Обработчик прокрутки
 window.addEventListener("scroll", () => {
+    console.log("SCROLL start")
     if (isLoading || stopperScroll) return; // Защита от повторных вызовов
     
     const scrollTop = window.scrollY;
     const windowHeight = window.innerHeight;
     const fullHeight = document.documentElement.scrollHeight;
 
-    //  доскроллил до 80% страницы
-    if ((scrollTop + windowHeight) / fullHeight > 0.8) {
+    //  доскроллил до 85% страницы
+    
+    if ((scrollTop + windowHeight) / fullHeight > 0.85) {
         isLoading = true;
         
         CreateBoxsLine(10); 
         
-        console.log("SCROLL START")
+        console.log("SCROLL HERE")
         
         setTimeout(() => {
             isLoading = false;
-        }, 5000); // cчетчик временм задержки между вызовами
+        }, 10000); // cчетчик временм задержки между вызовами
     }
 });
 
