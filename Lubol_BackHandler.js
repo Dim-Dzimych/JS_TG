@@ -223,10 +223,10 @@ const Data = {
                     const imageUrl = person.photo === 'AA==' ? './Он.jpg' :
                         person.photo === 'AAA=' ? './Она.jpg' :
                             person.photo === 'IncorrectEnter' ? './IncorrectEnter.jpg' :
-                                person.photo === 'NotFound' ? './NotFoundPeopleCat.jpg' :
+                                person.photo === 'NotFound' ? './NotFoundPeopleCat.png' :
                             `data:image/jpeg;base64,${person.photo}`;
                     console.log(person.photo)
-                    if (person.photo === "IncorrectEnter")
+                    if (person.photo === "IncorrectEnter" || person.photo === "NotFound"  )
                     {
                         stopperScroll = true;
                     }
