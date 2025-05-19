@@ -222,7 +222,7 @@ const Data = {
                 for (let person of result.person) {
                     const imageUrl = person.photo === 'AA==' ? './Он.jpg' :
                         person.photo === 'AAA=' ? './Она.jpg' :
-                            person.photo === 'IncorrectEnter' ? './IncorrectEnter.jpg' :
+                            person.photo === 'IncorrectEnter' ? './IncorrectEnter.png' :
                                 person.photo === 'NotFound' ? './NotFoundPeopleCat.png' :
                             `data:image/jpeg;base64,${person.photo}`;
                     console.log(person.photo)
