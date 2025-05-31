@@ -212,7 +212,7 @@ const Data = {
         const idperson = urlParams.get('id');
 
         const infoRequest = new XMLHttpRequest();
-        infoRequest.open("POST", "https://be3f-94-230-229-121.ngrok-free.app/api/finder/info", true);
+        infoRequest.open("POST", "https://25ad-90-156-161-66.ngrok-free.app/api/finder/info", true);
         infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         infoRequest.onreadystatechange = function () {
