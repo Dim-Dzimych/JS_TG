@@ -197,7 +197,7 @@ const UI = {
 const Events = {
     handleButtonClick: function(buttonNumber, userId, transferPersonId) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://be3f-94-230-229-121.ngrok-free.app/api/finder/chat", true);
+        xhr.open("POST", "https://25ad-90-156-161-66.ngrok-free.app/api/finder/chat", true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         var data = JSON.stringify({ userId: userId, transferPersonId: transferPersonId });
