@@ -117,7 +117,7 @@ window.addEventListener("visibilitychange",function (){
      let id = localStorage.getItem('userId');
      let transfersPersonsIds = people[id];
 
-
+    if (!id || !transfersPersonsIds || transfersPersonsIds.size === 0) return; // НОВАЯ СТРОЧКА ПО /api.finder/chat
     //var xhr = new XMLHttpRequest();
     //xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
     //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -126,7 +126,7 @@ window.addEventListener("visibilitychange",function (){
     //var data = JSON.stringify("2124");
 
 
-    fetch("https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", {
+    fetch("https://4b76-84-54-78-15.ngrok-free.app/api/finder/chat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -236,8 +236,9 @@ function CreateIdPerson(userId)
 
 
 window.addEventListener('beforeunload', (event) => {
+    console.log("BEFORE SEND /FINDER/CHAT")
     // Отправка данных
-    fetch('https://25ad-90-156-161-66.ngrok-free.app/api/finder/chat', {
+    fetch('https://https://4b76-84-54-78-15.ngrok-free.app/api/finder/chat', {
         method: 'POST',
         body: JSON.stringify({ message: 'User is leaving!' }),
         headers: { 'Content-Type': 'application/json' }

@@ -121,7 +121,7 @@ const UI = {
             heartImg.src = liked ? 'iconLikeActive.svg' : 'iconLikeNonActive.svg';
 
             // Отправка данных на сервер
-            fetch("https://be3f-94-230-229-121.ngrok-free.app/api/finder/chat", {
+            fetch("https://4b76-84-54-78-15.ngrok-free.app/api/finder/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -168,8 +168,8 @@ const UI = {
         tags.innerHTML = `
         <p>${city}</p>
         <p>${profession}</p>
-        <p>${zodiac}</p>
-    `;
+        <p>${zodiac}</p>`;
+        
         slideUp.appendChild(tags);
 
         const aboutTitle = document.createElement('span');
@@ -197,7 +197,8 @@ const UI = {
 const Events = {
     handleButtonClick: function(buttonNumber, userId, transferPersonId) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://25ad-90-156-161-66.ngrok-free.app/api/finder/chat", true);
+        console.log("STARTS FINDER/CHAT")
+        xhr.open("POST", "https://4b76-84-54-78-15.ngrok-free.app/api/finder/chat", true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         var data = JSON.stringify({ userId: userId, transferPersonId: transferPersonId });
@@ -212,14 +213,13 @@ const Data = {
         const idperson = urlParams.get('id');
 
         const infoRequest = new XMLHttpRequest();
-        infoRequest.open("POST", "https://25ad-90-156-161-66.ngrok-free.app/api/finder/info", true);
+        infoRequest.open("POST", "https://4b76-84-54-78-15.ngrok-free.app/api/finder/info", true);
         infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         infoRequest.onreadystatechange = function () {
             if (infoRequest.readyState === 4 && infoRequest.status === 200) {
                 const result = JSON.parse(infoRequest.responseText);
-
-                for (let person of result.person) {
+                for (let person of result.profiles) {
                     const imageUrl = person.photo === 'AA==' ? './Он.jpg' :
                         person.photo === 'AAA=' ? './Она.jpg' :
                             person.photo === 'IncorrectEnter' ? './IncorrectEnter.png' :
@@ -251,7 +251,7 @@ const Data = {
         
         console.log("IDPERSON start");
         var idToSend = idperson;
-        
+        console.log("IDPERSON-----" + idToSend);
         const shownIds = getShownIds()
         if(shownIds != null)
         {
