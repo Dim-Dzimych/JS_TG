@@ -117,7 +117,7 @@ window.addEventListener("visibilitychange",function (){
      let id = localStorage.getItem('userId');
      let transfersPersonsIds = people[id];
 
-    if (!id || !transfersPersonsIds || transfersPersonsIds.size === 0) return; // НОВАЯ СТРОЧКА ПО /api.finder/chat
+    //if (!id || !transfersPersonsIds || transfersPersonsIds.size === 0) return; // НОВАЯ СТРОЧКА ПО /api.finder/chat
     //var xhr = new XMLHttpRequest();
     //xhr.open("POST", "https://add0-87-255-17-234.ngrok-free.app/api/finder/chat", true);
     //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
