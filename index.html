@@ -183,8 +183,8 @@
             width: 52px;
             height: 52px;
             background: none;
-            margin-right: 16px;
-            margin-bottom: 4px;
+            margin-right: 4px;
+            margin-bottom: 6px;
             border: none;
             font-size: 16px;
             color: white;
@@ -198,12 +198,12 @@
 
         .toggle-button {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            /*top: 10px;*/
+            right: 2px;
             background: transparent;
             border: none;
             /*border-radius: 50%;*/
-            padding: 8px;
+            /*padding: 8px;*/
             /*cursor: pointer;*/
             font-size: 18px;
             z-index: 4;
@@ -215,11 +215,11 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 60%; /*управляем напрямую высотой */
+            height: 55%; /*управляем напрямую высотой */
             transform: translateY(100%);
             background-color:#FEFEFE;
-            color: black;
-            padding: 8px 12px 4px 12px;
+            color: #474747;
+            padding: 4px 12px 4px 12px;
             
             box-sizing: border-box;
             transition: transform 0.4s ease;
@@ -231,10 +231,14 @@
         .slide-up p {
             font-family: "SFProText-Regular";
             font-size: 18px;
+            margin-left: 4px;
+            margin-top: 1px;
+            
         }
         .slide-up span {
             font-family: "SFProText-Medium";
             font-size: 20px;
+            margin-left: 4px;
         }
         .tags {
             display: flex;
@@ -244,6 +248,7 @@
             justify-content: left;
             width: 100%;
             box-sizing: border-box;
+            margin-top: 6px;
             padding-bottom: 12px;
             /*visibility: hidden;*/
         }
@@ -255,7 +260,7 @@
             background-color:#EBEDFF;
             color: #474747;
             border-radius: 16px;
-            padding: 3px 12px 4.5px 12px;
+            padding: 4px 12px 4.5px 8px;
             font-size: 18px;
         }
         /* Активное состояние */
@@ -307,15 +312,17 @@
 
         .location-icon {
             width: 16px;
-            height: 20px;
+            height: 24px;
             margin-right: 5px;
             display: inline-block;
             vertical-align: middle;
+            transform: translateY(-4px);
         }
         
        .mosckva {
-           font-family: "SFProText-Medium";
+           font-family: "SFProText-Regular";
            font-size:20px ;
+           transform: translateY(-4px);
        }
 
         button:focus {
