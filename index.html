@@ -113,13 +113,7 @@
 
 
         .heart-button {
-            /*width: 52px;*/
-            /*height: 52px;*/
             background: none;
-            /*margin-right: 4px;*/
-            /*margin-bottom: 6px;*/
-            /*right: ;*/
-            /*transform: translateX(20px);*/
             border: none;
             font-size: 16px;
             color: white;
@@ -137,7 +131,6 @@
             right: -8px;
             background: transparent;
             border: none;
-           
             font-size: 18px;
             z-index: 4;
         }
@@ -294,6 +287,17 @@
             src: url("sf-pro-display/SFProText-Light.ttf") format("truetype");
             font-display: swap;
         }
+        @font-face {
+            font-family: 'Pacifico';
+            src: url('sf-pro-display/Pacifico.ttf') format('truetype');
+            font-display: swap;
+        } 
+          
+        @font-face {
+            font-family: "PoiretOne-Regular";
+            src: url("sf-pro-display/PoiretOne-Regular.ttf") format("truetype");
+            font-display: swap;
+        }
         
         @media (min-width: 371px) {
             .card {
@@ -367,6 +371,7 @@
                 right: 8px;
             }
         }
+        
 
     </style>
 </head>
@@ -440,10 +445,21 @@
     const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
     
     const splashText = document.getElementById('splash-text');
+    
     splashText.innerHTML = `
-  <p>${randomPhrase.quote}</p>
-  <p style="margin-top: 10px; font-style: italic;">${randomPhrase.author}</p>
-`;
+   <span style="font-family: 'Pacifico';
+    font-size: 64px;
+      color: white;
+       display: block;
+        text-align:center;
+         margin-bottom: 36px">
+    ЛЮБОЛЬ
+  </span>
+  <p style="font-family: 'Pacifico'; font-size: 34px;font-weight: lighter; ">${randomPhrase.quote}</p>
+  
+  <p style="margin-top: 18px;font-family: 'PoiretOne-Regular';">${randomPhrase.author}</p>`;
+    
+
 
     window.onload = function () {
         initializeBack();
@@ -457,92 +473,8 @@
         }, 4000);
     };
 </script>
-
-<!--<div id="startScreen">-->
-<!--    <img src="./startScreen.jpg" alt="Добро пожаловать" />-->
-<!--    <div id="startScreen-text"></div>-->
-<!--</div>-->
-
-<!--<div class="card">-->
-<!--    <img src="photo1.jpg" class ="my_photo" alt="Фото">-->
-<!--    -->
-<!--    &lt;!&ndash; Блюр-оверлей &ndash;&gt;-->
-<!--    <div class="image-blur-overlay"></div>-->
-
-<!--    &lt;!&ndash; Заголовок сверху по центру &ndash;&gt;-->
-<!--    <div class="centered-name">Анастасия, 25</div>-->
-<!--    -->
-<!--    <div class="bottom-info">-->
-<!--        <div class="text-info">-->
-<!--            <div class="name-age">Анастасия, 25</div>-->
-<!--            <div class="location">-->
-<!--                <img src="icon_location.svg" class="location-icon" alt="Гео" >-->
-<!--                <span class="mosckva">Москва </span>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <button class="heart-button">-->
-<!--            <img src="iconLikeNonActive.svg" alt="лайк">-->
-<!--        </button>-->
-<!--    </div>-->
-
-<!--    <button class="toggle-button">-->
-<!--        <img src="iconExpand.svg" alt="IconExpand" >-->
-<!--    </button>-->
-<!--    <div class="slide-up">-->
-<!--        -->
-<!--        <div class="tags" id = "tagsInfo">-->
-<!--            <p>Москва</p>-->
-<!--            <p>Дизайнер</p>-->
-<!--            <p>Рак</p>-->
-<!--            <p>Дизайнер</p>-->
-<!--        </div>-->
-<!--        <span id="aboutTitle">О себе</span>-->
-<!--        <p >Я ЛЮБЛЮ жизнь и все с ней связано. Все очень классные. -->
-<!--        </p>-->
-<!--    </div>-->
-<!--</div>-->
-
-<script>
-    
-    
-    // document.querySelectorAll('.toggle-button').forEach(button => {
-    //     button.addEventListener('click', () => {
-    //         const card = button.closest('.card');
-    //         card.classList.toggle('active');
-    //        
-    //         const icon = button.querySelector('img');
-    //         icon.src = card.classList.contains('active')
-    //             ? 'iconHide.svg'
-    //             : 'iconExpand.svg';
-    //     });
-    // });
-    
-    //
-    // document.querySelectorAll('.heart-button').forEach(button => {
-    //     button.addEventListener('click', () => {
-    //         const card = button.closest('.card');
-    //         card.classList.toggle('liked');
-    //
-    //         const icon = button.querySelector('img');
-    //         if (card.classList.contains('liked')) {
-    //             icon.src = 'iconLikeActive.svg'; // Вторая картинка сердечка
-    //         } else { 
-    //             icon.src = 'iconLikeNonActive.svg'; // Первая картинка сердечка
-    //         }
-    //     });
-    // });
-
-   
-</script>
-
 </body>
 </html>
 
 
 
-<!--<div class="bottom-info">-->
-<!--    <span>Живу в Москве 25 лет</span>-->
-<!--    <button class="heart-button">-->
-<!--        <img src="iconLikeNonActive.svg" alt="Toggle" >-->
-<!--    </button>-->
-<!--</div>-->

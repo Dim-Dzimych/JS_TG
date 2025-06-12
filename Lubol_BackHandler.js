@@ -197,7 +197,7 @@ const UI = {
 const Events = {
     handleButtonClick: function(buttonNumber, userId, transferPersonId) {
         var xhr = new XMLHttpRequest();
-        console.log("STARTS FINDER/CHAT")
+        
         xhr.open("POST", "https://4b76-84-54-78-15.ngrok-free.app/api/finder/chat", true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
