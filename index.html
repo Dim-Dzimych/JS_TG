@@ -48,74 +48,7 @@
             object-fit: cover;
         }
 
-        @media (min-width: 371px) {   
-            .card {
-                width: 361px;
-                position: relative;
-                height: 400px;
-                margin: 20px;
-                overflow: hidden;
-                border-radius: 15px;
-                /*box-shadow: 0 4px 8px rgba(0,0,0,0.2);*/
-                background-color: #fff;
-                border: 1px solid #A6B0ED;
-                /*font-size: 18px;*/
-                /*padding: 20px;*/
-            }
-        }
-        @media (min-width: 381px) {   
-            .card {
-                width: 371px;
-                position: relative;
-                height: 400px;
-                margin: 20px;
-                overflow: hidden;
-                border-radius: 15px;
-                /*box-shadow: 0 4px 8px rgba(0,0,0,0.2);*/
-                border: 1px solid #A6B0ED;
-                background-color: #fff;
-                /*font-size: 18px;*/
-                /*padding: 20px;*/
-        
-            }
-        }
-        @media (min-width: 391px) {  /*   ДЕСКТОП И МОБИЛКА СЮДА*/
-            .card {
-                width: 381px;
-                position: relative;
-                height: 400px;
-                margin: 20px;
-                overflow: hidden;
-                border-radius: 15px;
-                /*box-shadow: 0 4px 8px rgba(0,0,0,0.2);*/
-                border: 1px solid #A6B0ED;
-                background-color: #fff;
-                /*font-size: 18px;*/
-                /*padding: 20px;*/
-            }
-        }
-        @media (min-width: 768px) { /*ДЛЯ СТАНДАРТНОГО КОТА по дефолту*/
-            .card {
-                width: 481px;
-                position: relative;
-                height: max-content;
-                margin: 20px;
-                overflow: hidden;
-                border-radius: 15px;
-                /*box-shadow: 0 4px 8px rgba(0,0,0,0.2);*/
-                border: 1px solid #A6B0ED;
-                background-color: #fff;
-                /*font-size: 18px;*/
-                /*padding: 20px;*/
-            }
-        }
-        /* Автоматически применяется, если на устройстве тёмная тема */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #121212;
-                color: white;
-            }
-        }
+     
         
         /* Блюр-оверлей */
         .image-blur-overlay {
@@ -201,10 +134,10 @@
         .toggle-button {
             position: absolute;
             top: 2px;
-            right: 2px;
+            right: -2px;
             background: transparent;
             border: none;
-            /*transform: translateX(12px);*/
+           
             font-size: 18px;
             z-index: 4;
         }
@@ -360,6 +293,79 @@
             font-family: "SFProText-Light";
             src: url("sf-pro-display/SFProText-Light.ttf") format("truetype");
             font-display: swap;
+        }
+        
+        @media (min-width: 371px) {
+            .card {
+                width: 361px;
+                position: relative;
+                height: 400px;
+                margin: 20px;
+                overflow: hidden;
+                border-radius: 15px;
+                /*box-shadow: 0 4px 8px rgba(0,0,0,0.2);*/
+                background-color: #fff;
+                border: 1px solid #A6B0ED;
+                /*font-size: 18px;*/
+                /*padding: 20px;*/
+            }
+        }
+        @media (min-width: 381px) {
+            .card {
+                width: 371px;
+                position: relative;
+                height: 400px;
+                margin: 20px;
+                overflow: hidden;
+                border-radius: 15px;
+                /*box-shadow: 0 4px 8px rgba(0,0,0,0.2);*/
+                border: 1px solid #A6B0ED;
+                background-color: #fff;
+                /*font-size: 18px;*/
+                /*padding: 20px;*/
+
+            }
+        }
+        @media (min-width: 391px) {  /*   ДЕСКТОП И МОБИЛКА СЮДА*/
+            .card {
+                width: 381px;
+                position: relative;
+                height: 400px;
+                margin: 20px;
+                overflow: hidden;
+                border-radius: 15px;
+                /*box-shadow: 0 4px 8px rgba(0,0,0,0.2);*/
+                border: 1px solid #A6B0ED;
+                background-color: #fff;
+                /*font-size: 18px;*/
+                /*padding: 20px;*/
+            }
+        }
+
+        /* Автоматически применяется, если на устройстве тёмная тема */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: white;
+            }
+        }
+        @media (min-width: 768px) { /*ДЛЯ СТАНДАРТНОГО КОТА по дефолту*/
+            .card {
+                width: 481px;
+                position: relative;
+                height: max-content;
+                margin: 20px;
+                overflow: hidden;
+                border-radius: 15px;
+                /*box-shadow: 0 4px 8px rgba(0,0,0,0.2);*/
+                border: 1px solid #A6B0ED;
+                background-color: #fff;
+                /*font-size: 18px;*/
+                /*padding: 20px;*/
+            }
+            .bottom-info{
+                right: 8px;
+            }
         }
 
     </style>
