@@ -126,7 +126,7 @@ window.addEventListener("visibilitychange",function (){
     //var data = JSON.stringify("2124");
 
 
-    fetch("https://4b76-84-54-78-15.ngrok-free.app/api/finder/chat", {
+    fetch("https://1133-213-230-82-80.ngrok-free.app/api/finder/chat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
