@@ -121,7 +121,7 @@ const UI = {
             heartImg.src = liked ? 'iconLikeActive.svg' : 'iconLikeNonActive.svg';
 
             // Отправка данных на сервер
-            fetch("https://1133-213-230-82-80.ngrok-free.app/api/finder/chat", {
+            fetch("https://e4aa-213-230-82-80.ngrok-free.app/api/finder/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -198,7 +198,7 @@ const Events = {
     handleButtonClick: function(buttonNumber, userId, transferPersonId) {
         var xhr = new XMLHttpRequest();
         
-        xhr.open("POST", "https://1133-213-230-82-80.ngrok-free.app/api/finder/chat", true);
+        xhr.open("POST", "https://e4aa-213-230-82-80.ngrok-free.app/api/finder/chat", true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         var data = JSON.stringify({ userId: userId, transferPersonId: transferPersonId });
@@ -213,7 +213,7 @@ const Data = {
         const idperson = urlParams.get('id');
 
         const infoRequest = new XMLHttpRequest();
-        infoRequest.open("POST", "https://1133-213-230-82-80.ngrok-free.app/api/finder/info", true);
+        infoRequest.open("POST", "https://e4aa-213-230-82-80.ngrok-free.app/api/finder/info", true);
         infoRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         infoRequest.onreadystatechange = function () {
